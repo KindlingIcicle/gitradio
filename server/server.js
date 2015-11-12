@@ -11,7 +11,7 @@ var testHandler = function (req, res, next) {
 
 app.get(testHandler);
 
-var port = 8888;
+var port = process.env.PORT || 8888;
 
 app.listen(port);
 
