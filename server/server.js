@@ -4,7 +4,8 @@ var path = require('path');
 var app = express();
 
 //serve up static directory
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static('./client'));
+
 
 var testHandler = function (req, res, next) {
   console.log(req.method);
@@ -13,7 +14,7 @@ var testHandler = function (req, res, next) {
 
 app.get(testHandler);
 
-var port = 7331;
+var port = process.env.PORT || 8888;
 
 app.listen(port);
 
