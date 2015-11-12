@@ -5,14 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "path": "^0.12.7"
   },
-  "devDependencies": {
-
-  },
-  "scripts": {
-
-  },
+  "devDependencies": {},
+  "scripts": {},
   "author": "",
   "license": "ISC"
 }

@@ -6,7 +6,7 @@ var app = express();
 //serve up static directory
 // Note: adjusted the directory location to work locally
 //       May not work on heroku unless revert to './client'
-app.use(express.static('../client'));
+app.use(express.static('./client'));
 
 var testHandler = function (req, res, next) {
   console.log(req.method);
@@ -44,7 +44,7 @@ var githubHandler = function (req, res, next) {
 app.post('/githubCallbackURL', jsonParser, githubHandler);
 
 //-----------GET----------------------//
-app.get('/', testHandler);
+app.get(testHandler);
 
 //-----------SETUP---------------------//
 var port = process.env.PORT || 5123;
