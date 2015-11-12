@@ -2,7 +2,7 @@
 var context;
 var bufferLoader;
 context = new AudioContext();
-var sound;
+var background;
 //play sound
 var playSound = function (buffer) {
   var source = context.createBufferSource();
@@ -34,9 +34,9 @@ var loadSounds = function (obj, soundMap) {
   bufferLoader.load();
 };
 
-var loopSound = function (bufferList) {
+var loopSound = function (buffer) {
   var source = context.createBufferSource();
-  source.buffer = bufferList[0];
+  source.buffer = buffer;
 
   source.connect(context.destination);
   source.loop = true;
@@ -48,12 +48,16 @@ var doNothing = function () {
 };
 
 var clickHandler = function(e) {
-  playSound(sound);
+  playSound();
 };
 
+var loopHandler = function(e) {
+  loopSound(background);
+};
 //click event listener
 var clicker = document.getElementById('click');
-click.addEventListener('click', clickHandler);
-
+var looper = document.getElementById('loop');
+clicker.addEventListener('click', clickHandler);
+looper.addEventListener('click', loopHandler);
 
 window.onload = loadSounds;

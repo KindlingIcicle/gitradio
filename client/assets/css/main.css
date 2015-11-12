@@ -4,3 +4,17 @@
   background-attachment: fixed;
   font: 1em sans-serif;
 }
+
+button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
