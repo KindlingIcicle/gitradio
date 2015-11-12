@@ -1,12 +1,12 @@
 # Project Name
 
-> Pithy project description
+AmbientGit - integrating your project workflow into your environment.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Banun Idris
+  - __Scrum Master__: Jason Matsui
+  - __Development Team Members__: Charlie Harrington, Way Huang
 
 ## Table of Contents
 
@@ -19,16 +19,16 @@
 1. [Contributing](#contributing)
 
 ## Usage
-
-> Some usage instructions
+> TODO: Some usage instructions
 
 ## Requirements
+> TODO: Update with stack
 
 - Node 0.10.x
+- Express 4
+- Backbone
 - Redis 2.6.x
 - Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 
