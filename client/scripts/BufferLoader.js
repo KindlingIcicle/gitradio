@@ -32,7 +32,7 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
           return;
         }
         loader.bufferList[index] = buffer;
-        sound = buffer;
+        background = buffer;
         if (++loader.loadCount === loader.urlList.length)
           loader.onload(loader.bufferList);
       },
