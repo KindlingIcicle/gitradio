@@ -2,20 +2,35 @@
 <html>
 <head>
   <title> GitHub Events API Feed </title>
-  <script type="text/javascript" src="bower_components/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="config/config.js"></script>
 </head>
 <body>
 
   <h1> GitHub Events API Feed </h1>
-    
+  
+  <h2 class="currentTime"></h2>  
   <div class="events"></div>
 
   <script type="text/javascript">
 
   $(document).ready(function() {
 
-    var gitGet = function(url) {
+    console.log(new Date().getTime());
 
+    // Current Time
+    (function clock(){
+      var now = new Date();
+      var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+      var time = utc.getHours() + ":" + utc.getMinutes() + ":" + utc.getSeconds();
+      $('.currentTime').html(time);
+      setTimeout(clock, 1000);
+    })();
+
+    // the Event Queue
+    var queue = [];
+
+    var gitGet = function(url) {
       $.ajax({
         url: url,
         method: 'GET',
@@ -23,17 +38,29 @@
         dataType: 'jsonP',
         success: function(data) {
           data.data.forEach(function(event){
-            queue.push(event.created_at);
-            $('.events').prepend('<p>', event.type);
-            $('.events').prepend('<img src=' + event.actor.avatar_url +'/>');
-            console.log(queue);
+            // create the data objects
+            var eventObj = {
+              type: event.type,
+              time: event.created_at.toISOString(),
+              user: event.actor.login,
+              user_url: event.actor.url,
+              user_avatar_url: event.actor.avatar_url,
+              repo: event.repo.name,
+              repo_url: event.repo.url
+            };
+            
+            queue.push(eventObj);
           });
+          console.log(queue);
         }
       });
     };
     
-    // Need to replace with environment variables
-    gitGet("https://api.github.com/events?client_id=CLIENT_ID&client_secret=CLIENT_SECRET");
+    // $('.events').prepend('<p>', event.type);
+    // $('.events').prepend('<img src=' + event.actor.avatar_url +'/>');
+
+    // gitGet("https://api.github.com/events?client_id=" + CLIENT_ID + 
+    //   "&client_secret="+ CLIENT_SECRET);
 
   });
 
