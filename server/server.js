@@ -6,7 +6,7 @@ var app = express();
 //serve up static directory
 // Note: adjusted the directory location to work locally
 //       May not work on heroku unless revert to './client'
-app.use(express.static('./client'));
+app.use(express.static('../client'));
 
 var testHandler = function (req, res, next) {
   console.log(req.method);
