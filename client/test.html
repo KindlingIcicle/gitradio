@@ -9,21 +9,31 @@
 
   <h1> GitHub Events API Feed </h1>
   
-  <h2 class="currentTime"></h2>  
+  <h2 class="currentTime"></h2>
+  <h2 class="earlyTime"></h2>    
   <div class="events"></div>
 
   <script type="text/javascript">
 
   $(document).ready(function() {
 
-    console.log(new Date().getTime());
+    var nowEarly;
 
-    // Current Time
     (function clock(){
       var now = new Date();
-      var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-      var time = utc.getHours() + ":" + utc.getMinutes() + ":" + utc.getSeconds();
-      $('.currentTime').html(time);
+      var durationInSeconds = 5;      
+      nowEarly = new Date(now);
+      nowEarly.setSeconds(now.getSeconds() - durationInSeconds);
+      
+      // display current time
+      var currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+      $('.currentTime').html(currentTime);
+
+      // display "early" time
+      var earlyTime = nowEarly.getHours() + ":" + nowEarly.getMinutes() + ":" + nowEarly.getSeconds();
+      $('.earlyTime').html(earlyTime);
+
+      // clock tick every 1 second
       setTimeout(clock, 1000);
     })();
 
@@ -39,9 +49,12 @@
         success: function(data) {
           data.data.forEach(function(event){
             // create the data objects
+            
+            var time = new Date(event.created_at);
+
             var eventObj = {
               type: event.type,
-              time: event.created_at.toISOString(),
+              time: time,
               user: event.actor.login,
               user_url: event.actor.url,
               user_avatar_url: event.actor.avatar_url,
@@ -51,16 +64,34 @@
             
             queue.push(eventObj);
           });
-          console.log(queue);
+
+          // invoke the looper function
+          looper();
         }
       });
     };
     
-    // $('.events').prepend('<p>', event.type);
-    // $('.events').prepend('<img src=' + event.actor.avatar_url +'/>');
+    var looper = function() {
+      // Get the first element to check
+      var next = queue[queue.length - 1];
+    
+      // if the time hasn't passed yet..
+      if (nowEarly < next.time) {
+        // do nothing
+      } else {
+        $('.events').prepend('<p>', next.type + ": " + next.time);
+        queue.pop();
+      }
 
-    // gitGet("https://api.github.com/events?client_id=" + CLIENT_ID + 
-    //   "&client_secret="+ CLIENT_SECRET);
+      // Keep looping if there's something in the queue
+      if ( queue.length > 0) {
+        setTimeout(looper, 500);
+      }
+    };
+
+    // Invoke gitGet ajax request
+    gitGet("https://api.github.com/events?client_id=" + CLIENT_ID + 
+      "&client_secret="+ CLIENT_SECRET);
 
   });
 
