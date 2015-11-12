@@ -1,39 +1,59 @@
 // TODO - Refactor to Backbone.js
 var context;
 var bufferLoader;
-
+context = new AudioContext();
+var sound;
 //play sound
-var playSound = function (buffer, loop) {
+var playSound = function (buffer) {
   var source = context.createBufferSource();
   source.buffer = buffer;
   source.connect(context.destination);
-  source.loop = loop;
   source.start(0);
 };
-//autoplay
-var init = function () {
-  context = new AudioContext();
+
+//autoplay on pageload
+var loadSounds = function (obj, soundMap) {
+  // Array-ify
+  var names = [];
+  var paths = [];
+  
+  for (var name in soundMap) {
+    var path = soundMap[name];
+    names.push(name);
+    paths.push(path);
+  }
 
   bufferLoader = new BufferLoader(
     context,
     [
-      '../assets/sample.wav'
+    '../assets/sample.wav'
     ],
-    finishedLoading
+    doNothing
     );
 
   bufferLoader.load();
 };
 
-var finishedLoading = function (bufferList) {
-  // Create two sources and play them both together.
-  var source1 = context.createBufferSource();
-  source1.buffer = bufferList[0];
+var loopSound = function (bufferList) {
+  var source = context.createBufferSource();
+  source.buffer = bufferList[0];
 
-  source1.connect(context.destination);
-  source1.loop = true;
-  source1.start(0);
+  source.connect(context.destination);
+  source.loop = true;
+  source.start(0);
 };
 
-//init everything on windowload
-window.onload = init;
+var doNothing = function () {
+  console.log('yep.');
+};
+
+var clickHandler = function(e) {
+  playSound(sound);
+};
+
+//click event listener
+var clicker = document.getElementById('click');
+click.addEventListener('click', clickHandler);
+
+
+window.onload = loadSounds;
