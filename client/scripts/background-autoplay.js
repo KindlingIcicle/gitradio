@@ -2,6 +2,14 @@
 var context;
 var bufferLoader;
 
+//play sound
+var playSound = function (buffer, loop) {
+  var source = context.createBufferSource();
+  source.buffer = buffer;
+  source.connect(context.destination);
+  source.loop = loop;
+  source.start(0);
+};
 //autoplay
 var init = function () {
   context = new AudioContext();
