@@ -18,27 +18,45 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+   
+  AmbientGit
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  
+  Developers working on big projects. Remote and non-remote devs.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
+  Allows you to get updated on projects, without having to change screens. Sounds occur in the ambient background.
+
 ## Problem ##
   > Describe the problem your product solves.
+
+  Good git habits. Keeping everyone in loop without breaking the flow. 
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
+  Integrate with your workflow instead of disrupting you. Uses ambient noise to notify and motivate you. 
+
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+
+  "Developers love writing code, but they also like to keep track of the status of the project. With AmbientGit, you'll get notifications without breaking from your flow.""
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
+  Visit our site. Load up a project, and experience the sounds.
+
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  I love AmbietGit. It's simple and helps me know how everyone else is working. 
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  Try AmbientGit and enjoy the notifications. 
