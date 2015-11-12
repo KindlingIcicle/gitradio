@@ -44,7 +44,7 @@ var githubHandler = function (req, res, next) {
 app.post('/githubCallbackURL', jsonParser, githubHandler);
 
 //-----------GET----------------------//
-app.get('/', testHandler);
+app.get(testHandler);
 
 //-----------SETUP---------------------//
 var port = process.env.PORT || 5123;
