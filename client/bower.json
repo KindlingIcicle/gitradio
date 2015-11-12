@@ -1,0 +1,14 @@
+{
+  "name": "client",
+  "homepage": "https://github.com/way0750/kindlingicicle",
+  "authors": [
+    "way0750 <bruce0750@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "~1.2.3"
+  }
+}
