@@ -1,8 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
 var app = express();
 
-app.use(express.static('../client'));
+//serve up static directory
+app.use(express.static(path.join(__dirname, '../client')));
 
 var testHandler = function (req, res, next) {
   console.log(req.method);
@@ -11,7 +13,7 @@ var testHandler = function (req, res, next) {
 
 app.get(testHandler);
 
-var port = 8888;
+var port = 7331;
 
 app.listen(port);
 
