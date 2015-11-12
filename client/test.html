@@ -2,20 +2,45 @@
 <html>
 <head>
   <title> GitHub Events API Feed </title>
-  <script type="text/javascript" src="bower_components/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="config/config.js"></script>
 </head>
 <body>
 
   <h1> GitHub Events API Feed </h1>
-    
+  
+  <h2 class="currentTime"></h2>
+  <h2 class="earlyTime"></h2>    
   <div class="events"></div>
 
   <script type="text/javascript">
 
   $(document).ready(function() {
 
-    var gitGet = function(url) {
+    var nowEarly;
 
+    (function clock(){
+      var now = new Date();
+      var durationInSeconds = 5;      
+      nowEarly = new Date(now);
+      nowEarly.setSeconds(now.getSeconds() - durationInSeconds);
+      
+      // display current time
+      var currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+      $('.currentTime').html(currentTime);
+
+      // display "early" time
+      var earlyTime = nowEarly.getHours() + ":" + nowEarly.getMinutes() + ":" + nowEarly.getSeconds();
+      $('.earlyTime').html(earlyTime);
+
+      // clock tick every 1 second
+      setTimeout(clock, 1000);
+    })();
+
+    // the Event Queue
+    var queue = [];
+
+    var gitGet = function(url) {
       $.ajax({
         url: url,
         method: 'GET',
@@ -23,17 +48,50 @@
         dataType: 'jsonP',
         success: function(data) {
           data.data.forEach(function(event){
-            queue.push(event.created_at);
-            $('.events').prepend('<p>', event.type);
-            $('.events').prepend('<img src=' + event.actor.avatar_url +'/>');
-            console.log(queue);
+            // create the data objects
+            
+            var time = new Date(event.created_at);
+
+            var eventObj = {
+              type: event.type,
+              time: time,
+              user: event.actor.login,
+              user_url: event.actor.url,
+              user_avatar_url: event.actor.avatar_url,
+              repo: event.repo.name,
+              repo_url: event.repo.url
+            };
+            
+            queue.push(eventObj);
           });
+
+          // invoke the looper function
+          looper();
         }
       });
     };
     
-    // Need to replace with environment variables
-    gitGet("https://api.github.com/events?client_id=CLIENT_ID&client_secret=CLIENT_SECRET");
+    var looper = function() {
+      // Get the first element to check
+      var next = queue[queue.length - 1];
+    
+      // if the time hasn't passed yet..
+      if (nowEarly < next.time) {
+        // do nothing
+      } else {
+        $('.events').prepend('<p>', next.type + ": " + next.time);
+        queue.pop();
+      }
+
+      // Keep looping if there's something in the queue
+      if ( queue.length > 0) {
+        setTimeout(looper, 500);
+      }
+    };
+
+    // Invoke gitGet ajax request
+    gitGet("https://api.github.com/events?client_id=" + CLIENT_ID + 
+      "&client_secret="+ CLIENT_SECRET);
 
   });
 
