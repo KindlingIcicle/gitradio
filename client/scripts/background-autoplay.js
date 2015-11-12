@@ -55,9 +55,7 @@ var loopHandler = function(e) {
   loopSound(background);
 };
 //click event listener
-var clicker = document.getElementById('click');
 var looper = document.getElementById('loop');
-clicker.addEventListener('click', clickHandler);
 looper.addEventListener('click', loopHandler);
 
 window.onload = loadSounds;
