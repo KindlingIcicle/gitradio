@@ -23,7 +23,7 @@ var finishedLoading = function (bufferList) {
   source1.buffer = bufferList[0];
 
   source1.connect(context.destination);
-  // source1.loop = true;
+  source1.loop = true;
   source1.start(0);
 };
 
