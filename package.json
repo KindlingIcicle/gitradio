@@ -4,6 +4,7 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
+  "start": "cd server; npm install --save; cd ../client; bower install --save",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
