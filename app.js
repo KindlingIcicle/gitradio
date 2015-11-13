@@ -9,7 +9,9 @@ var path = require('path');
 // mongoose.connect('mongodb://localhost/kindlingicicle');
 
 // Env variables
-var PORT = 3000 || process.env.PORT;
+var PORT = process.env.PORT || 3000;
+
+app.use(express.static('./public'));
 
 // middleware for routing
 // require('./server/middleware.js')(app, express);

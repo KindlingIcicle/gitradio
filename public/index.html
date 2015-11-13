@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="css/styles.css">
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
+  <script src="bower_components/jquery.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
   
@@ -33,7 +32,9 @@
 
 </body>
 
-  <script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+
   var mockEvents = [
     {data : "fake data 01"},
     {data : "fake data 02"},

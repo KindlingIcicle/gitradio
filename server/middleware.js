@@ -6,7 +6,7 @@ module.exports = function(app, express) {
   app.use(bodyParser.json());
 
   // Serve static files - socket compatible
-  app.use(express.static(__dirname + '/../public'));
+  // app.use(express.static(__dirname + '/../public'));
   
 
    var githubHandler = function (req, res, next) {
