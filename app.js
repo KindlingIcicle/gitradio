@@ -8,7 +8,7 @@ var io = require('socket.io')(http);
 // mongoose.connect('mongodb://localhost/kindlingicicle');
 
 // Env variables
-var PORT = 3000 || process.env.PORT;
+var PORT = process.env.PORT || 3000;
 
 // middleware for routing
 require('./server/middleware.js')(app, express);
