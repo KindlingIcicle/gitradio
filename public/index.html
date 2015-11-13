@@ -31,7 +31,7 @@
   <!-- Buffer Loader Class for loading audio -->
   <script src="./client/audio-helpers.js"></script>
   <!-- actual script loading the audio stuff -->
-  <script src="./client/loop.js"></script>
+  <script src="./client/sound.js"></script>
 
 </body>
 
@@ -48,7 +48,19 @@
 
   socket.on('event', function(event) {
     console.log('event!');
-    playSound(background);
+    
+    if (event.type === 'pull-request') {
+      playSound(loaded[0]);
+    } 
+
+    if (event.type === 'watch') {
+      playSound(loaded[1]);
+    } 
+
+    if (event.type === 'fork') {
+      playSound(loaded[2]);
+    } 
+
     gitEventApp.addNewEvent({data: event.type});
   });
   </script>

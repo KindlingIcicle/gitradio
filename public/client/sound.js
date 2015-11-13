@@ -2,13 +2,12 @@
 var context;
 var bufferLoader;
 context = new AudioContext();
-var background;
+var loaded = [];
 //play sound
 
-//TODO: fix this
 var playSound = function (buffer) {
   var source = context.createBufferSource();
-  source.buffer = background;
+  source.buffer = buffer;
   source.connect(context.destination);
   source.start(0);
 };
@@ -28,7 +27,9 @@ var loadSounds = function (obj, soundMap) {
   bufferLoader = new BufferLoader(
     context,
     [
-    '../assets/sample.wav'
+    '../assets/pull-request.wav',
+    '../assets/watch.wav',
+    '../assets/fork.wav'
     ],
     doNothing
     );
@@ -45,12 +46,10 @@ var loopSound = function (buffer) {
   source.start(0);
 };
 
-var doNothing = function () {
-  console.log('yep.');
-};
-
-var clickHandler = function(e) {
-  playSound(background);
+var doNothing = function (bufferList) {
+  console.log('yep. loaded.');
+  console.log(bufferList);
+  loaded = bufferList;
 };
 
 var loopHandler = function(e) {
