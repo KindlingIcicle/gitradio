@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "jQuery#~2.1.4",
     "backbone": "~1.2.3",
     "underscore": "~1.8.3"
   },

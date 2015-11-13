@@ -19,16 +19,12 @@ AmbientGit - integrating your project workflow into your environment.
 1. [Contributing](#contributing)
 
 ## Usage
-> TODO: Some usage instructions
 
 ## Requirements
-> TODO: Update with stack
 
 - Node 0.10.x
 - Express 4
 - Backbone
-- Redis 2.6.x
-- Postgresql 9.1.x
 
 ## Development
 

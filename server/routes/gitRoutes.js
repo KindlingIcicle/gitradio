@@ -1,5 +1,4 @@
-module.exports = function (app) {
-  
+module.exports = function (app, io) {
    var githubHandler = function (req, res, next) {
     var head = req.headers;
     var body = req.body;
@@ -15,19 +14,18 @@ module.exports = function (app) {
       repo: body.repository.name
     };
 
+    // Pass the event to client via sockets
+    io.emit('event', event);
     // Log the event
     console.log(event);
 
-    // TODO: Pass the event to client via sockets
-    //
-
     // TODO: Store in the mongo db
-    // 
 
     // Respond to Github
     res.status(200).send("Thank you!");
   };
 
-  app.post('/githubCallbackURL', githubHandler);
+  //don't need 'callbackURL' again here as it's specified in middleware
+  app.post('/', githubHandler);
 
 };
