@@ -16,9 +16,9 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "~2.1.4",
     "backbone": "~1.2.3",
-    "underscore": "~1.8.3",
-    "jquery": "~2.1.4"
+    "underscore": "~1.8.3"
   },
   "devDependencies": {
     "mocha": "~2.3.3",
