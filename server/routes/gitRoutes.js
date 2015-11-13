@@ -27,8 +27,8 @@ module.exports = function (app) {
     // Respond to Github
     res.status(200).send("Thank you!");
   };
-
-  app.route('/githubCallbackURL')
-      .post(githubHandler);
+  
+  //don't need 'callbackURL' again here as it's specified in middleware
+  app.post('/', githubHandler);
 
 };
