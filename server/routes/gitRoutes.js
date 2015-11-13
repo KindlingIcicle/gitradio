@@ -20,7 +20,6 @@ module.exports = function (app, io) {
     console.log(event);
 
     // TODO: Store in the mongo db
-    // 
 
     // Respond to Github
     res.status(200).send("Thank you!");
