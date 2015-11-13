@@ -2,13 +2,13 @@
 var context;
 var bufferLoader;
 context = new AudioContext();
-var background;
-//play sound
+//storing the sounds
+var loaded = [];
 
-//TODO: fix this
+//play sound
 var playSound = function (buffer) {
   var source = context.createBufferSource();
-  source.buffer = background;
+  source.buffer = buffer;
   source.connect(context.destination);
   source.start(0);
 };
@@ -25,17 +25,21 @@ var loadSounds = function (obj, soundMap) {
     paths.push(path);
   }
 
+//setting to the 3 main sounds - can be refactored to use soundMap for different sounds
   bufferLoader = new BufferLoader(
     context,
     [
-    '../assets/sample.wav'
+    '../assets/pull-request.wav',
+    '../assets/watch.wav',
+    '../assets/fork.wav'
     ],
-    doNothing
+    storeSounds
     );
 
   bufferLoader.load();
 };
 
+//just-in-case we gonna loop something
 var loopSound = function (buffer) {
   var source = context.createBufferSource();
   source.buffer = buffer;
@@ -45,21 +49,10 @@ var loopSound = function (buffer) {
   source.start(0);
 };
 
-var doNothing = function () {
-  console.log('yep.');
+//stores Sounds in global loaded variable
+//TODO: change to object instead of array
+var storeSounds = function (bufferList) {
+  loaded = bufferList;
 };
-
-var clickHandler = function(e) {
-  playSound(background);
-};
-
-var loopHandler = function(e) {
-  loopSound(background);
-  socket.emit('looping');
-};
-
-//click event listener
-// var looper = document.getElementById('loop');
-// looper.addEventListener('click', loopHandler);
 
 window.onload = loadSounds;

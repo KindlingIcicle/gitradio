@@ -64,8 +64,8 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
           alert('error decoding file data: ' + url);
           return;
         }
+
         loader.bufferList[index] = buffer;
-        background = buffer;
         if (++loader.loadCount === loader.urlList.length)
           loader.onload(loader.bufferList);
       },
