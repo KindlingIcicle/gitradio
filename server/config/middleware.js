@@ -16,7 +16,7 @@ module.exports = function(app, express) {
     var body = req.body;
     var time = new Date();
 
-    // creates simple "event" object
+    // Creates simple "event" object
     var event = {
       type: head['x-github-event'],
       time: time,
@@ -26,11 +26,20 @@ module.exports = function(app, express) {
       repo: body.repository.name
     };
 
+    // Log the event
     console.log(event);
+
+    // TODO: Pass the event to client via sockets
+    //
+
+    // TODO: Store in the mongo db
+    // 
+
+    // Respond to Github
     res.status(200).send("Thank you!");
   };
 
-  // Routes
+  // Callback url
   app.post('/githubCallbackURL', githubHandler);
 
 };
