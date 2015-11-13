@@ -5,13 +5,24 @@ module.exports = function (app, io) {
     var time = new Date();
 
     // Creates simple "event" object
+    console.log(body);
+
+    var formatTime = function(dateObj){
+      var date = dateObj.toDateString();
+      var hours = dateObj.getHours();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      var mins = dateObj.getMinutes();
+      return date + ': ' + hours + ':' + mins + ' ' + ampm;
+    };
+
     var event = {
       type: head['x-github-event'],
-      time: time,
+      time: formatTime(time),
       user: body.sender.login,
-      user_url: body.sender.url,
+      user_url: body.sender.html_url,
       user_avatar_url: body.sender.avatar_url,
-      repo: body.repository.name
+      repo: body.repository.name,
+      repo_url: body.repository.html_url
     };
 
     // Pass the event to client via sockets

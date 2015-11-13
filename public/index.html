@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="css/styles.css">
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
   
@@ -37,6 +40,7 @@
 
  <script type="text/javascript">
 
+
   var gitEventCollection = new eventCollection([]);
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
@@ -49,7 +53,7 @@
   socket.on('event', function(event) {
     console.log('event!');
     playSound(background);
-    gitEventApp.addNewEvent({data: event.type});
+    gitEventApp.addNewEvent({data: event});
   });
   </script>
 </html>
