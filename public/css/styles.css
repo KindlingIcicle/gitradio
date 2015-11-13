@@ -35,6 +35,9 @@ p{
 
 .eventEntry{
   clear: both;
-  border: 1px red solid;
   margin-bottom: 1em;
+  width : 50%;
+  margin: auto auto;
+  background-color: #3366CC;
+  border-radius: 5%;
 }
