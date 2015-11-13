@@ -1,0 +1,26 @@
+{
+  "name": "kindling-icicle",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Banun Atina Idris <banunatina@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kindlingicicle/kindlingicicle",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.3",
+    "chai": "~3.4.1"
+  }
+}
