@@ -28,6 +28,7 @@ module.exports = function (app) {
     res.status(200).send("Thank you!");
   };
 
-  app.post('/githubCallbackURL', githubHandler);
+  app.route('/githubCallbackURL')
+      .post(githubHandler);
 
 };
