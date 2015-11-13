@@ -40,9 +40,9 @@ var PORT = 3000 || process.env.PORT;
 
   // Log the event
 
-  // TODO: Pass the event to client via sockets
-  // 
+  // Pass the event to client via sockets
   io.emit(event.type, event);
+  
   console.log(event);
 
   // TODO: Store in the mongo db

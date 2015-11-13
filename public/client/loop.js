@@ -4,9 +4,11 @@ var bufferLoader;
 context = new AudioContext();
 var background;
 //play sound
+
+//TODO: fix this
 var playSound = function (buffer) {
   var source = context.createBufferSource();
-  source.buffer = buffer;
+  source.buffer = background;
   source.connect(context.destination);
   source.start(0);
 };
@@ -48,15 +50,16 @@ var doNothing = function () {
 };
 
 var clickHandler = function(e) {
-  playSound();
+  playSound(background);
 };
 
 var loopHandler = function(e) {
   loopSound(background);
   socket.emit('looping');
 };
+
 //click event listener
-var looper = document.getElementById('loop');
-looper.addEventListener('click', loopHandler);
+// var looper = document.getElementById('loop');
+// looper.addEventListener('click', loopHandler);
 
 window.onload = loadSounds;
