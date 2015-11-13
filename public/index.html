@@ -40,7 +40,10 @@
   socket.on('looping', function() {
     console.log('Client heard it!');
   });
-
+  socket.on('watch', function(event) {
+    console.log('someone starred you!');
+    console.log(event);
+  });
   var mockEvents = [
     {data : "fake data 01"},
     {data : "fake data 02"},
