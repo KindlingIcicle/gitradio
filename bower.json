@@ -23,5 +23,6 @@
   "devDependencies": {
     "mocha": "~2.3.3",
     "chai": "~3.4.1"
-  }
+  },
+  "cacheDirectories": ["node_modules", "public/bower_components" ]
 }
