@@ -1,27 +1,61 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>DEMO APP</title>
-  <link rel='stylesheet' href='css/styles.css'>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
+  
+  <script src="client/views/appView.js"></script>
+  <script src="client/views/eventEntryView.js"></script>
+  <script src="client/views/eventListView.js"></script>
+  
+  <script src="client/models/app.js"></script>
+  <script src="client/models/eventModel.js"></script>
+  <script src="client/collections/eventCollection.js"></script>
+  
+
   <meta charset="UTF-8">
   <title>greenfield project</title>
 </head>
 <body>
-  <button id="loop">Play background!</button>
-  
- <!-- SOCKET CREATION SCRIPT - TO BE REFACTORED TO BACKBONE -->
-  <script>
+  <div class="headerArea">
+    
+  </div>
+
+  <div class="mainAppView">
+  <!-- this is where the app will rendered and re-rendered -->
+  </div>
+  <!-- Buffer Loader Class for loading audio -->
+  <!--script src="./scripts/BufferLoader.js"></script-->
+  <!--script src="./scripts/background-autoplay.js"></script-->
+
+</body>
+
+  <script type="text/javascript">
+
   var socket = io();
 
   socket.on('looping', function() {
     console.log('Client heard it!');
   });
-  </script>
 
-  <script src="./scripts/audio-helpers.js"></script>
-  <script src="./scripts/loop.js"></script>
-</body>
+  var mockEvents = [
+    {data : "fake data 01"},
+    {data : "fake data 02"},
+    {data : "fake data 03"},
+    {data : "fake data 04"},
+    {data : "fake data 05"},
+    {data : "fake data 06"},
+    {data : "fake data 07"},
+    {data : "fake data 08"},
+    {data : "fake data 09"},
+    {data : "fake data 10"}
+  ];
+  var gitEventCollection = new eventCollection(mockEvents);
+  var gitEventApp = new app({eventList : gitEventCollection});
+  var gitEventAppView = new appView({model : gitEventApp});
+
+  </script>
 </html>
