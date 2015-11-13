@@ -1,6 +1,6 @@
 var eventEntryView  = Backbone.View.extend({
   tagName : 'li',
-  template : _.template('<div>got this message: <%= data%></div>'),
+  template : _.template('<div>new event: <%= data%></div>'),
 
   initialize : function(){
     this.render();

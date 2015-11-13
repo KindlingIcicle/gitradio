@@ -14,6 +14,7 @@
   <script src="client/models/eventModel.js"></script>
   <script src="client/collections/eventCollection.js"></script>
   
+  <script src="/socket.io/socket.io.js"></script>
 
   <meta charset="UTF-8">
   <title>greenfield project</title>
@@ -26,45 +27,41 @@
   <div class="mainAppView">
   <!-- this is where the app will rendered and re-rendered -->
   </div>
+
   <!-- Buffer Loader Class for loading audio -->
   <script src="./client/audio-helpers.js"></script>
+  <!-- actual script loading the audio stuff -->
   <script src="./client/loop.js"></script>
 
 </body>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript">
+ <script type="text/javascript">
 
-  var mockEvents = [
-    {data : "fake data 01"},
-    {data : "fake data 02"},
-    {data : "fake data 03"},
-    {data : "fake data 04"},
-    {data : "fake data 05"},
-    {data : "fake data 06"},
-    {data : "fake data 07"},
-    {data : "fake data 08"},
-    {data : "fake data 09"},
-    {data : "fake data 10"}
-  ];
-  var gitEventCollection = new eventCollection(mockEvents);
+  // var mockEvents = [
+  //   {data : "fake data 01"},
+  //   {data : "fake data 02"},
+  //   {data : "fake data 03"},
+  //   {data : "fake data 04"},
+  //   {data : "fake data 05"},
+  //   {data : "fake data 06"},
+  //   {data : "fake data 07"},
+  //   {data : "fake data 08"},
+  //   {data : "fake data 09"},
+  //   {data : "fake data 10"}
+  // ];
+  var gitEventCollection = new eventCollection([]);
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
 
-  </script>
+ </script>
 
   <script type="text/javascript">
   var socket = io();
 
-  socket.on('looping', function() {
-    console.log('Client heard it!');
-  });
-
-  socket.on('watch', function(event) {
-    console.log('someone starred you!');
+  socket.on('event', function(event) {
+    console.log('event!');
     playSound(background);
     gitEventApp.addNewEvent({data: event.type});
   });
-
   </script>
 </html>

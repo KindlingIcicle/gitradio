@@ -7,8 +7,6 @@ module.exports = function(app, express) {
 
   // Serve static files - socket compatible
   // app.use(express.static(__dirname + '/../public'));
-  
-
    var githubHandler = function (req, res, next) {
     var head = req.headers;
     var body = req.body;

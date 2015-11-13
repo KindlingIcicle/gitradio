@@ -15,9 +15,9 @@ app.use(express.static('./public'));
 
 // middleware for routing
 // require('./server/middleware.js')(app, express);
-  app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-  app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 /**==================
       GITHUB API
@@ -43,8 +43,7 @@ app.use(express.static('./public'));
   // Log the event
 
   // Pass the event to client via sockets
-  io.emit(event.type, event);
-  
+  io.emit('event', event);
   console.log(event);
 
   // TODO: Store in the mongo db
@@ -63,10 +62,6 @@ app.post('/githubCallbackURL', githubHandler);
 ====================*/
 io.on('connection', function(socket){
   console.log('connected user!');
-  socket.on('looping', function() {
-    console.log('Server heard it!');
-    io.emit('looping');
-  });
 
 });
 
