@@ -10,6 +10,8 @@ var io = require('socket.io')(http);
 // Env variables
 var PORT = process.env.PORT || 3000;
 
+app.use(express.static('./public'));
+
 // middleware for routing
 require('./server/middleware.js')(app, express);
 
