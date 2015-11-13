@@ -1,3 +1,6 @@
 {
-  "directory": "./public/bower_components"
+  "directory": "./public/bower_components",
+  "searchpath": [
+  "https://bower.herokuapp.com"
+  ]
 }
