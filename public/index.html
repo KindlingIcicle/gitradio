@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
   
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
@@ -23,9 +23,9 @@
   <title>greenfield project</title>
 </head>
 <body>
-  <div class="headerArea">
-    
-  </div>
+  <header class="headerArea">
+    <h1>To Stay Sane, Commit More Often</h1>
+  </header>
 
   <div class="mainAppView">
   <!-- this is where the app will rendered and re-rendered -->
@@ -40,8 +40,17 @@
 
  <script type="text/javascript">
 
+  var fakeEvent = {
+      type: 'fake type',
+      time: '10/10/10 : 10:10:10',
+      user: 'memememe',
+      user_url: 'http://fake.com',
+      user_avatar_url: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg',
+      repo: 'nope',
+      repo_url: 'http://fake.com'
+    };
 
-  var gitEventCollection = new eventCollection([]);
+  var gitEventCollection = new eventCollection([{data : fakeEvent}]);
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
 
