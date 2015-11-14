@@ -27,6 +27,7 @@
     <h1>To Stay Sane, Commit More Often</h1>
   </header>
 
+
   <div class="mainAppView">
   <!-- this is where the app will rendered and re-rendered -->
   </div>
@@ -45,12 +46,13 @@
       time: '10/10/10 : 10:10:10',
       user: 'memememe',
       user_url: 'http://fake.com',
-      user_avatar_url: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg',
+      user_avatar_url: 'assets/allen.jpg',
       repo: 'nope',
       repo_url: 'http://fake.com'
     };
 
-  var gitEventCollection = new eventCollection([{data : fakeEvent}]);
+
+  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}, {data : fakeEvent}]);
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
 
