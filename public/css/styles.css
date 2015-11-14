@@ -7,15 +7,16 @@ body{
   margin: 3em auto 4em 20%;
   font-weight: 900;
   text-shadow: 
-  1px 1px 0.5px #ff9999,
-  2px 2px 0.5px #ffb399,
-  3px 3px 0.5px #ffcc99,
-  4px 4px 0.5px #ffe699,
-  5px 5px 0.5px #99ccff,
-  6px 6px 0.5px #b399ff,
-  7px 7px 0.5px #ccff99,
-  8px 8px 0.5px #ff99ff,
-  9px 9px 0.5px #ff9999    ;
+    1px 1px 0px #e08585, 
+    2px 2px 0px #e09c85, 
+    3px 3px 0px #e0b385, 
+    4px 4px 0px #e0c985, 
+    5px 5px 0px #e0e085, 
+    6px 6px 0px #c9e085, 
+    7px 7px 0px #b3e085, 
+    8px 8px 0px #9ce085, 
+    9px 9px 0px #85e085
+    ;
 }
 
 button {
@@ -64,10 +65,9 @@ p{
 
 .eventEntry{
   clear: both;
-  margin-bottom: 1em;
+  margin: auto auto;
   width : 50%;
   min-height: 9em;
-  margin: auto auto;
   background-color: rgba(255, 204, 217, 0.5);
   border-radius: 0.5em 0.5em;
   box-shadow:
