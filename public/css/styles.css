@@ -1,3 +1,22 @@
+body{
+  background-image: url('../../assets/bg.jpg');
+}
+
+.headerArea{
+  position: relative;
+  margin: 3em auto 4em 20%;
+  font-weight: 900;
+  text-shadow: 
+  1px 1px 0.5px #ff9999,
+  2px 2px 0.5px #ffb399,
+  3px 3px 0.5px #ffcc99,
+  4px 4px 0.5px #ffe699,
+  5px 5px 0.5px #99ccff,
+  6px 6px 0.5px #b399ff,
+  7px 7px 0.5px #ccff99,
+  8px 8px 0.5px #ff99ff,
+  9px 9px 0.5px #ff9999    ;
+}
 
 button {
   background: none;
@@ -15,6 +34,9 @@ button:focus {
 
 
 img {
+  margin-left: 1em;
+  margin-top: 1em;
+  margin-right: 4em;
   height: 100px;
   width: 100px;
 }
@@ -24,9 +46,16 @@ ul {
   list-style-type: none;
 }
 
+
 p{
-  padding-top: 10px;
+  /*border: 1px red solid;*/
+  padding-top: 8px;
   margin-left: 40px;
+}
+
+.eventType{
+  margin-left: 3em;
+  font: bold 2.5em sans-serif;
 }
 
 .img-circle{
@@ -37,7 +66,18 @@ p{
   clear: both;
   margin-bottom: 1em;
   width : 50%;
+  min-height: 9em;
   margin: auto auto;
-  background-color: #3366CC;
-  border-radius: 5%;
+  background-color: rgba(255, 204, 217, 0.5);
+  border-radius: 0.5em 0.5em;
+  box-shadow:
+    0.1em 0.1em 0em 0em rgba(133, 163, 224, 0.5),
+    0.2em 0.2em 0em 0em rgba(133, 163, 224, 0.5),
+    0.3em 0.3em 0em 0em rgba(133, 163, 224, 0.5),
+    0.4em 0.4em 0em 0em rgba(133, 163, 224, 0.5),
+    0.5em 0.5em 0em 0em rgba(204, 217, 255, 0.5),
+    0.6em 0.6em 0em 0em rgba(204, 217, 255, 0.5),
+    0.7em 0.7em 0em 0em rgba(204, 217, 255, 0.5),
+    0.8em 0.8em 0em 0em rgba(204, 217, 255, 0.5)
+    ;
 }
