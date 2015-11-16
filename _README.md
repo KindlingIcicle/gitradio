@@ -25,8 +25,18 @@ AmbientGit - integrating your project workflow into your environment.
 - Node 0.10.x
 - Express 4
 - Backbone
+- Bootstrap
+- Socket.io
+- Underscore
+- Jquery
+- Mongoose / Mongo
+- Bower
 
 ## Development
+
+- Mocha
+- Chai
+- Sinon
 
 ### Installing Dependencies
 
@@ -40,7 +50,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](../documentation/_PRESS-RELEASE.md)
 
 
 ## Contributing
