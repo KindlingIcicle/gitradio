@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser');
 var path = require('path');
+var passport = require('passport');
 
 //inject sockets
 module.exports = function(app, express, io) {
@@ -9,6 +10,10 @@ module.exports = function(app, express, io) {
   //setup body parser
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+
+  // set up passport
+  app.use(passport.initialize());
+  app.use(passport.session());
   
   //serve static directory
   app.use(express.static(__dirname + '/../public'));
