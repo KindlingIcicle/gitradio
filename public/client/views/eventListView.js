@@ -23,6 +23,9 @@ var eventListView  = Backbone.View.extend({
     var newEventModel = this.collection.last();
     var newEntryView = new eventEntryView({model : newEventModel});
     this.$el.prepend(newEntryView.$el);
+    newEntryView.$el.hide();
+    // newEntryView.$el.slideUp(0);
+    newEntryView.$el.slideDown(400);
   }
 
 });
