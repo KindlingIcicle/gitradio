@@ -104,6 +104,12 @@ p{
   position: relative;
   top: 0.5em;
 }
+
+.eventTime{
+  font-style: italic;
+  font-weight: 900;
+}
+
 .eventEntry{
   position: relative;
   clear: both;
