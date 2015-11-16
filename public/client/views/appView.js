@@ -16,6 +16,13 @@ var appView = Backbone.View.extend({
     this.render();
     var mainAppView = this;
     $('.switchMode').on('click', function(){
+      var button = $(this);
+      allenModeOn = button.hasClass('allenModeOn');
+      if (allenModeOn){
+        button.removeClass('allenModeOn');
+      } else {
+        button.addClass('allenModeOn');
+      }
       mainAppView.model.audioLibChange();
     });
 

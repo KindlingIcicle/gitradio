@@ -3,7 +3,7 @@ var app = Backbone.Model.extend({
   //for now the app model is only a container for the eventCollection
   
   audioLibChange : function () {
-    console.log("i heard this in the app model");
+    console.log("i heard this in the app model but what do I do now?");
   },
 
 //to receive data and pushing data to the eventCollection
@@ -17,7 +17,7 @@ var app = Backbone.Model.extend({
 
     socket.on('event', function(event) {
 
-//if the appropriate sound for the event is available, play it
+      //if the appropriate sound for the event is available, play it
       if (loaded[event.type]) {
         playSound(loaded[event.type]);
       } else {

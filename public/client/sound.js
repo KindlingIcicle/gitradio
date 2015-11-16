@@ -29,9 +29,9 @@ var loadSounds = function (obj, soundMap) {
   bufferLoader = new BufferLoader(
     context,
     [
-    '../assets/squishymic/tastypullreq.wav',
-    '../assets/squishymic/watchingyou.wav',
-    '../assets/squishymic/forkbro.wav',
+    '../assets/squishymic/pull_request.wav',
+    '../assets/squishymic/watch.wav',
+    '../assets/squishymic/fork.wav',
     '../assets/squishymic/thumbsup.wav'
     ],
     storeSounds
