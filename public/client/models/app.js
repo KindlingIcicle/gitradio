@@ -1,14 +1,9 @@
 var app = Backbone.Model.extend({
-
-//sock io might be connected here
-//to receive data and pushing data to the eventCollection
-//
-  initialize : function(){
-  },
-
-  addNewEvent : function (gitEvent) {
-    var newEvent = new eventModel(gitEvent);
-    this.get('eventList').push(newEvent);
+  //might be useful later on.
+  //for now the app model is only a container for the eventCollection
+  
+  audioLibChange : function () {
+    console.log("i heard this in the app model");
   }
 
 });

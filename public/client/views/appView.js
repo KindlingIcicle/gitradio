@@ -1,21 +1,21 @@
 var appView = Backbone.View.extend({
 
-
-//should have eventListView instantiated here
+  //the appView will be anchored on to the div tag with class 'mainAppView' on the index.html
   el: '.mainAppView',
 
   initialize : function () {
-    //make eventListView
+    //create the eventListView to manage all the events as soon as the appView is instantiated:
     this.eventListView = new eventListView({collection : this.model.get("eventList")});
     this.render();
-    this.listenTo(this.model, 'all', function(){
-      console.log('from app view');
+    var mainAppView = this;
+    $('.switchMode').on('click', function(){
+      mainAppView.model.audioLibChange();
     });
   },
 
   render : function(){
+    //append the eventListView to the div tag with class = "mainAppView";
     this.$el.append(this.eventListView.$el);
-    // debugger;
   }
 
 });

@@ -4,15 +4,11 @@ body{
 
 .headerArea{
   font-weight: 900;
-  /*border: 1px red solid;*/
   background-color: rgba(255, 153, 204, 0.4);
-  /*margin-bottom: 0.5em;*/
 }
 
 .logo{
-  /*border: 1px red solid;*/
   margin-top: 0px;
-  /*margin-bottom: 0px;*/
   margin-left: 0.2em;
   color: white;
   font-size: 5em;
@@ -23,15 +19,15 @@ body{
 }
 
 .quote{
-  /*border: 1px red solid;*/
   color: white;
   margin-left: 1.5em;
   font-size: 1.5em;
   white-space: pre;
-  /*display: inline-block;*/
 }
 
 button {
+  vertical-align: 6px;
+  margin-left:5em;
   background: none;
   border: 2px solid white;
   color: white;
@@ -41,8 +37,9 @@ button {
   cursor: pointer;
 }
 
-button:focus {
-  outline: none;
+button:hover {
+  /*outline: none;*/
+  
 }
 
 
@@ -61,7 +58,6 @@ ul {
 
 
 p{
-  /*border: 1px red solid;*/
   padding-top: 8px;
   margin-left: 40px;
 }
@@ -70,22 +66,17 @@ p{
   vertical-align: middle;
   margin-left: 6em;
   margin-bottom: 0em;
-  /*display: inline-block;*/
-  /*white-space: pre;*/
   font: bold 2em sans-serif;
-  /*border: 1px red solid;*/
 
 }
 
 .img-circle{
   float: left;
-  /*border: 1px red solid;*/
   margin: 8px;
 }
 
 .userName{
   font-size: 1.5em;
-  /*border: 1px red solid;*/
   line-height: 1em;
   padding-top: 0px;
   margin: 0px;
