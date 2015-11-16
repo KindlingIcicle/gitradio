@@ -3,20 +3,32 @@ body{
 }
 
 .headerArea{
-  position: relative;
-  margin: 3em auto 4em 20%;
   font-weight: 900;
-  text-shadow: 
-    1px 1px 0px #e08585, 
-    2px 2px 0px #e09c85, 
-    3px 3px 0px #e0b385, 
-    4px 4px 0px #e0c985, 
-    5px 5px 0px #e0e085, 
-    6px 6px 0px #c9e085, 
-    7px 7px 0px #b3e085, 
-    8px 8px 0px #9ce085, 
-    9px 9px 0px #85e085
-    ;
+  /*border: 1px red solid;*/
+  background-color: rgba(255, 153, 204, 0.4);
+  /*margin-bottom: 0.5em;*/
+}
+
+.logo{
+  /*border: 1px red solid;*/
+  margin-top: 0px;
+  /*margin-bottom: 0px;*/
+  margin-left: 0.2em;
+  color: white;
+  font-size: 5em;
+  font-style: italic;
+  font-weight: 900;
+  display: inline-block;
+  vertical-align: -0.1em;
+}
+
+.quote{
+  /*border: 1px red solid;*/
+  color: white;
+  margin-left: 1.5em;
+  font-size: 1.5em;
+  white-space: pre;
+  /*display: inline-block;*/
 }
 
 button {
@@ -55,19 +67,35 @@ p{
 }
 
 .eventType{
-  margin-left: 3em;
-  font: bold 2.5em sans-serif;
+  vertical-align: middle;
+  margin-left: 6em;
+  margin-bottom: 0em;
+  /*display: inline-block;*/
+  /*white-space: pre;*/
+  font: bold 2em sans-serif;
+  /*border: 1px red solid;*/
+
 }
 
 .img-circle{
   float: left;
+  /*border: 1px red solid;*/
+  margin: 8px;
 }
 
+.userName{
+  font-size: 1.5em;
+  /*border: 1px red solid;*/
+  line-height: 1em;
+  padding-top: 0px;
+  margin: 0px;
+  margin-left: 7em;
+}
 .eventEntry{
   clear: both;
-  margin: auto auto;
+  margin: 0.8em auto;
   width : 50%;
-  min-height: 9em;
+  min-height: 8.3em;
   background-color: rgba(255, 204, 217, 0.5);
   border-radius: 0.5em 0.5em;
   box-shadow:
@@ -81,3 +109,4 @@ p{
     0.8em 0.8em 0em 0em rgba(204, 217, 255, 0.5)
     ;
 }
+

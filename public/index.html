@@ -24,7 +24,8 @@
 </head>
 <body>
   <header class="headerArea">
-    <h1>To Stay Sane, Commit More Often</h1>
+    <h1 class="logo">GitHub Blink</h1>
+    <span class = 'quote'>To Stay Sane, Commit More Often</span>
   </header>
 
 
@@ -42,17 +43,17 @@
  <script type="text/javascript">
 
   var fakeEvent = {
-      type: 'fake type',
+      type: 'thumb check',
       time: '10/10/10 : 10:10:10',
-      user: 'memememe',
+      user: 'allen',
       user_url: 'http://fake.com',
-      user_avatar_url: 'assets/allen.jpg',
+      user_avatar_url: 'assets/allen003.png',
       repo: 'nope',
       repo_url: 'http://fake.com'
     };
 
 
-  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}, {data : fakeEvent}]);
+  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
 
