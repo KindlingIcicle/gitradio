@@ -51,7 +51,7 @@ bower install
 ### Roadmap
 
 View the project roadmap [here](/documentation/_PRESS-RELEASE.md)
-
+View the project roadmap [here](/documentation/projectRoadmap.md)
 
 ## Contributing
 
