@@ -3,7 +3,7 @@ var context;
 var bufferLoader;
 context = new AudioContext();
 //storing the sounds
-var loaded = [];
+var loaded = {};
 
 //play sound
 var playSound = function (buffer) {
@@ -15,7 +15,7 @@ var playSound = function (buffer) {
 
 //autoplay on pageload
 var loadSounds = function (obj, soundMap) {
-  // Array-ify
+  // Array-ify if given a soundmap
   var names = [];
   var paths = [];
   
@@ -25,13 +25,14 @@ var loadSounds = function (obj, soundMap) {
     paths.push(path);
   }
 
-//setting to the 3 main sounds - can be refactored to use soundMap for different sounds
+//setting to the main sounds - can be refactored to use soundMap for different sounds
   bufferLoader = new BufferLoader(
     context,
     [
-    '../assets/pull-request.wav',
-    '../assets/watch.wav',
-    '../assets/fork.wav'
+    '../assets/squishymic/tastypullreq.wav',
+    '../assets/squishymic/watchingyou.wav',
+    '../assets/squishymic/forkbro.wav',
+    '../assets/squishymic/thumbsup.wav'
     ],
     storeSounds
     );
@@ -49,10 +50,12 @@ var loopSound = function (buffer) {
   source.start(0);
 };
 
-//stores Sounds in global loaded variable
-//TODO: change to object instead of array
+//stores Sounds in global loaded object
 var storeSounds = function (bufferList) {
-  loaded = bufferList;
+  loaded['pull_request'] = bufferList[0];
+  loaded['watch'] = bufferList[1];
+  loaded['fork'] = bufferList[2];
+  loaded['pull_denied'] = bufferList[3];
 };
 
 window.onload = loadSounds;
