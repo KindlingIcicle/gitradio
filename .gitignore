@@ -29,4 +29,4 @@ dist/
 node_modules
 public/bower_components
 
-server/routes/oauth.js
+server/oauth.js
