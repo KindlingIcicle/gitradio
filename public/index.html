@@ -24,7 +24,7 @@
 </head>
 <body>
   <header class="headerArea">
-    <h1 class="logo">GitHub Blink</h1>
+    <h1 class="logo">GitHub Bling</h1>
     <span class = 'quote'>To Stay Sane, Commit More Often</span>
   </header>
 
@@ -59,24 +59,4 @@
 
  </script>
 
-  <script type="text/javascript">
-  var socket = io();
-
-  socket.on('event', function(event) {
-    console.log('event!');    
-    if (event.type === 'pull_request') {
-      playSound(loaded[0]);
-    } 
-
-    if (event.type === 'watch') {
-      playSound(loaded[1]);
-    } 
-
-    if (event.type === 'fork') {
-      playSound(loaded[2]);
-    } 
-
-    gitEventApp.addNewEvent({data: event});
-  });
-  </script>
 </html>
