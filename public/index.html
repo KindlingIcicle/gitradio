@@ -24,7 +24,7 @@
 </head>
 <body>
   <header class="headerArea">
-    <h1 class="logo">GitHub Blink</h1>
+    <h1 class="logo">GitHub Bling</h1>
     <span class = 'quote'>To Stay Sane, Commit More Often</span>
     <button class = "switchMode">Allen Mode</button>
   </header>
@@ -48,39 +48,18 @@
       user: 'allen',
       user_url: 'http://fake.com',
       user_avatar_url: 'assets/allen003.png',
-      repo: 'nope',
+      repo: 'repo of nothingness',
       repo_url: 'http://fake.com'
     };
 
   // start the backbone here
   
   //backbone collection for all events:
-  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
-  
+  // var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
+  var gitEventCollection = new eventCollection([]);
   //initiate the main app and its corresponding view here
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
 
-
-  //establish socket.io connection with the server:
-  var socket = io();
-
-  //add event listener on the connection. Server will send event, and an object, then corresponding sound will be played
-  socket.on('event', function(event) {
-    if (event.type === 'pull_request') {
-      playSound(loaded[0]);
-    } 
-
-    if (event.type === 'watch') {
-      playSound(loaded[1]);
-    } 
-
-    if (event.type === 'fork') {
-      playSound(loaded[2]);
-    }
-    //after sounds is played, add the event object to the backbone collection, 
-    //and the view associates with the collection, eventListView.js , will be notified and render the event.
-    gitEventCollection.push({data:event});
-  });
   </script>
 </html>

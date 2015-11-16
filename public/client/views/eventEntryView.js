@@ -2,7 +2,7 @@ var eventEntryView  = Backbone.View.extend({
   tagName : 'li',
   template : _.template('<div class = "eventEntry">\
     <img class = "img-circle" src = <%= user_avatar_url %> >\
-    <p class = "userName"><a href="<%= user_url %>"><b><%= user %></b>:</a></p>\
+    <p class = "userName"><a href="<%= user_url %>"><b><%= user %></b></a>@<a><%= repo %>:</a></p>\
     <p><a class = "eventType" href="<%= repo_url %>"><%= type %></p></a>\
     <p class ="eventTime" ><%= time %></p>\
     </div>'),

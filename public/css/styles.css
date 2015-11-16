@@ -38,8 +38,28 @@ button {
 }
 
 button:hover {
-  /*outline: none;*/
-  
+
+}
+
+
+
+form {
+  background-color: rgba(255, 153, 204, 0.4);
+  width: 50%;
+  height: 20em;
+  margin: 4em auto;
+}
+
+.getRepoName{
+  font-size: 3em;
+  margin: auto auto;
+  display: block;
+  width: 80%
+}
+
+.pickRepoButton{
+  margin: auto auto;
+  display: block;
 }
 
 
@@ -67,7 +87,7 @@ p{
   margin-left: 6em;
   margin-bottom: 0em;
   font: bold 2em sans-serif;
-
+  top: 1.5em;
 }
 
 .img-circle{
@@ -81,8 +101,11 @@ p{
   padding-top: 0px;
   margin: 0px;
   margin-left: 7em;
+  position: relative;
+  top: 0.5em;
 }
 .eventEntry{
+  position: relative;
   clear: both;
   margin: 0.8em auto;
   width : 50%;
