@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var passport = require('passport');
 var GithubStrategy = require('passport-github2').Strategy;
+var ids = require('./server/oauth.js');
 
 //=====  NODE_ENV  =======//
 var PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ passport.use(new GithubStrategy({
 
   // Auth a new user
   function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
     var username = profile._json.name;
     var avatarURL = profile._json.avatar_url;
     var login = profile._json.login;
