@@ -16,47 +16,30 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+## AmbietGit ##
    
-  AmbientGit
-
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  
-  Developers working on big projects. Remote and non-remote devs.
-
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
-  Allows you to get updated on projects, without having to change screens. Sounds occur in the ambient background.
+  Get updates on git repositories in real-time with auditory updates. 
 
 ## Problem ##
-  > Describe the problem your product solves.
 
-  Good git habits. Keeping everyone in loop without breaking the flow. 
+  Work is happening in real-time on your repository. You should have a way to know what's going on without changing screens. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
 
-  Integrate with your workflow instead of disrupting you. Uses ambient noise to notify and motivate you. 
+  Use ambient noise to notify and motivate you of your team's progress.
 
-## Quote from You ##
-  > A quote from a spokesperson in your company.
+## Quote from spokesperson ##
 
   "Developers love writing code, but they also like to keep track of the status of the project. With AmbientGit, you'll get notifications without breaking from your flow.""
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
 
-  Visit our site. Load up a project, and experience the sounds.
+  Load up a project, and experience the music.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
-  I love AmbietGit. It's simple and helps me know how everyone else is working. 
+  I love AmbietGit. It's simple and helps me know what everyone else is doing. 
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
 
   Try AmbientGit and enjoy the notifications. 
