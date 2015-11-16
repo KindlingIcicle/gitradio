@@ -60,9 +60,15 @@ module.exports = function(app, express, io) {
     request(newurl).pipe(res);
 
   });
-  
+
   //serve static directory
   app.use(express.static(__dirname + '/../public'));
+  
+  //db routes
+  var userRouter = express.Router();
+  app.use('/api/users', userRouter);
+  require('./routes/users/userRoutes.js')(userRouter);
+
 
   //routing for git events
   app.use('/githubCallbackURL', gitRouter);
