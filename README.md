@@ -1,6 +1,6 @@
 # kindlingicicle
 
-AmbientGit - integrating your project workflow into your environment.
+Github bling - integrating your project workflow into your environment.
 
 ## Team
 
@@ -19,6 +19,9 @@ AmbientGit - integrating your project workflow into your environment.
 1. [Contributing](#contributing)
 
 ## Usage
+
+Combine this with a repo to make git audio. You'll need to create a custom hook inside of git,
+create a server that has this repo. And then open the client to listen to updates. 
 
 ## Requirements
 
@@ -50,8 +53,8 @@ bower install
 
 ### Roadmap
 
-View the project press release [here](/documentation/_PRESS-RELEASE.md)
-View the project roadmap [here](/documentation/projectRoadmap.md)
+- View the project press release [here](/documentation/_PRESS-RELEASE.md)
+- View the project roadmap [here](/documentation/projectRoadmap.md)
 
 ## Contributing
 
