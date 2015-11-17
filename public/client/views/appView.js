@@ -15,8 +15,10 @@ var appView = Backbone.View.extend({
     this.eventListView = new eventListView({collection : this.model.get("eventList")});
     this.render();
     var mainAppView = this;
+
+   //toggle library when clicked
     $('.switchMode').on('click', function(){
-      mainAppView.model.audioLibChange();
+      mainAppView.model.get('library').changeLib();
     });
 
     var jsonObj = {
