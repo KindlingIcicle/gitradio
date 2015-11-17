@@ -28,3 +28,5 @@ dist/
 
 node_modules
 public/bower_components
+
+server/oauth.js

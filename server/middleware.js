@@ -1,5 +1,7 @@
 var bodyParser = require('body-parser');
 var path = require('path');
+var passport = require('passport');
+var request = require('request');
 
 //inject sockets
 module.exports = function(app, express, io) {
@@ -9,11 +11,50 @@ module.exports = function(app, express, io) {
   //setup body parser
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  
+
   //serve static directory
   app.use(express.static(__dirname + '/../public'));
 
   //routing for git events
   app.use('/githubCallbackURL', gitRouter);
   require('./routes/gitRoutes.js')(gitRouter, io);
+  
+  // -------------------------------------------------------------
+  // EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+  // * Set up routes for Github oauth token creation
+  // * Set up routes for mongo db
+  // -------------------------------------------------------------
+
+  // set up passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // auth routes
+  app.get('/auth/github',
+    passport.authenticate('github', {scope: [ 'user:email', 'admin:repo_hook' ] }),
+    function (req, res) {
+      // This goes to Github to resolve
+  });
+
+  app.get('/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    function (req, res) {
+      res.redirect('/');
+  });
+
+  app.get('/login', function (req, res) {
+    res.redirect('/auth/github');
+  });
+
+  app.get('/logout', function(req, res) {
+  req.session.destroy(function(err) {
+    res.redirect('/login');
+    });
+  });
+
+  //db api routes
+  var userRouter = express.Router();
+  app.use('/api/users', userRouter);
+  require('./routes/users/userRoutes.js')(userRouter);
+
 };
