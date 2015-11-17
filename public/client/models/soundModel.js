@@ -23,7 +23,7 @@ var soundModel = Backbone.Model.extend({
   bufferLoader: null,
 
 //Function to toggle between sound libraries - TODO: ability to switch between more than two
-  changeLib : function () {
+  toggleLib : function () {
     if (this.get('soundLibrary') === 'default') {
       this.set('soundLibrary', 'allen');
     } else {
@@ -88,6 +88,16 @@ var soundModel = Backbone.Model.extend({
     var source = this.get('context').createBufferSource();
     source.buffer = buffer;
     source.connect(this.get('context').destination);
+    source.start(0);
+  },
+
+  //not used - Just in case wanna play a looping sound. TODO: refactor to only use playSound with a boolean param
+  loopSound : function (buffer) {
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+
+    source.connect(context.destination);
+    source.loop = true;
     source.start(0);
   }
 

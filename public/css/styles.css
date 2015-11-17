@@ -31,24 +31,22 @@ button {
   background: none;
   border: 2px solid white;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   padding: 20px 40px;
   cursor: pointer;
 }
 
-button:active {
+/*button:active {
   position: relative;
   top: -2px;
   left: -2px;
 }
+*/
 
-.allenModeOn{
-  color: green;
-  text-shadow: 0px 0px 1px green;
+button:focus {
+  outline: none;
 }
-
-
 
 form {
   background-color: rgba(255, 153, 204, 0.4);
