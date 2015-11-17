@@ -31,17 +31,15 @@ button {
   background: none;
   border: 2px solid white;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   padding: 20px 40px;
   cursor: pointer;
 }
 
-button:hover {
-
+button:focus {
+  outline: none;
 }
-
-
 
 form {
   background-color: rgba(255, 153, 204, 0.4);

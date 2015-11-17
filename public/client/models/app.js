@@ -1,7 +1,5 @@
 var app = Backbone.Model.extend({
-  //for now the app model is only a container for the eventCollection
-  
-//to receive data and pushing data to the eventCollection
+
   initialize : function(params){
 
 //connect sockets on initialize
@@ -12,7 +10,7 @@ var app = Backbone.Model.extend({
 
     socket.on('event', function(event) {
 
-//if the appropriate sound for the event is available, play it
+//Plays the approprite sound if assigned/available - if not, plays the default sound
     var lib = params.library.get('loaded');
       if (lib[event.type]) {
         params.library.playSound(lib[event.type]);
@@ -21,11 +19,11 @@ var app = Backbone.Model.extend({
         params.library.playSound(lib['default']);
       }
       
-//update the feed
+//Updates the visual feed
       newEvent({data:event});
     });
    
-//listening for change to soundLibrary
+//Listens for change to soundLibrary and reloads Library when changed
    params.library.on('change:soundLibrary', function(data) {
      params.library.loadLibrary(data.get('soundLibrary'));
    }, this);

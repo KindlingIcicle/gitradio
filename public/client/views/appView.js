@@ -16,9 +16,9 @@ var appView = Backbone.View.extend({
     this.render();
     var mainAppView = this;
 
-   //toggle library when clicked
+   //toggle library when clicked - TODO: refactor into events object in appView
     $('.switchMode').on('click', function(){
-      mainAppView.model.get('library').changeLib();
+      mainAppView.model.get('library').toggleLib();
     });
 
     var jsonObj = {
