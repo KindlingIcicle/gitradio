@@ -26,7 +26,10 @@
   <header class="headerArea">
     <h1 class="logo">GitHub Bling</h1>
     <span class = 'quote'>To Stay Sane, Commit More Often</span>
-    <button class = "switchMode">Allen Mode</button>
+
+    <!-- experimental feature: to choose between mario and Allen mode><-->
+    <!--button class = "switchMode">Allen Mode</button-->
+
   </header>
 
   <div class="mainAppView">
@@ -41,6 +44,7 @@
 </body>
 
  <script type="text/javascript">
+
  //demo data
   var fakeEvent = {
       type: 'thumb check',
@@ -55,8 +59,10 @@
   // start the backbone here
   
   //backbone collection for all events:
-  // var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
-  var gitEventCollection = new eventCollection([]);
+
+  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
+
+
   //initiate the main app and its corresponding view here
   var gitEventApp = new app({eventList : gitEventCollection});
   var gitEventAppView = new appView({model : gitEventApp});
