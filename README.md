@@ -23,7 +23,8 @@ Github bling - integrating your project workflow into your environment.
 Combine this with a repo to make git audio. You'll need to create a custom hook inside of git,
 create a server that has this repo. And then open the client to listen to updates. 
 
-Too change/update view on new event:
+To change/update view on new event:
+
   one way: use the global object: gitEventCollection and push a new vanilla object that look like this:
   ```sh
   {
@@ -42,7 +43,6 @@ Too change/update view on new event:
   that event will be heard by the server which then passes it to the client and heard in the app model.
   then the event is pushed to the eventCollection by the addNewEvent function in app model.
   this will trigger the view to change on appView.
-
 
 component of the client:
   Views:
