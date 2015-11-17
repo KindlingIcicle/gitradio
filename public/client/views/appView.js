@@ -62,7 +62,7 @@ var appView = Backbone.View.extend({
   },
 
   render : function(){
-    //experimental feature: repo to choose to listen to:
+    //experimental feature: to display the form for user to enter which repo to listen to.
     // this.$el.append(this.formToPickRepo());
 
     //append the eventListView to the div tag with class = "mainAppView";

@@ -16,7 +16,7 @@ var app = Backbone.Model.extend({
     var newEvent = this.addNewEvent.bind(this);
 
     socket.on('event', function(event) {
-
+      console.log('heard the event');
       //if the appropriate sound for the event is available, play it
       if (loaded[event.type]) {
         playSound(loaded[event.type]);
