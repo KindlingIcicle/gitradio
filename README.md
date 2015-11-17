@@ -1,6 +1,6 @@
 # Github bling
 
-Get updates on git repositories in real-time with auditory updates. 
+Get real-time updates on repositories in with auditory updates. 
 
 ## Team
 
