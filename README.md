@@ -23,6 +23,48 @@ Github bling - integrating your project workflow into your environment.
 Combine this with a repo to make git audio. You'll need to create a custom hook inside of git,
 create a server that has this repo. And then open the client to listen to updates. 
 
+Too change/update view on new event:
+  one way: use the global object: gitEventCollection and push a new vanilla object that look like this:
+  ```sh
+  {
+    data: {
+        type: 'event type',
+        time: '10/10/10 : 10:10:10',
+        user: 'allen',
+        user_url: 'http://github.userProfile.com',
+        user_avatar_url: 'http://github.userProfile.picture',
+        repo: 'repo name',
+        repo_url: 'http://github.repo.path'
+    };
+  }
+  ```
+  second way: the server and client are paired by socket.io, whenever github sends a new event by webhook,
+  that event will be heard by the server which then passes it to the client and heard in the app model.
+  then the event is pushed to the eventCollection by the addNewEvent function in app model.
+  this will trigger the view to change on appView.
+
+
+component of the client:
+  Views:
+    appView:
+      it renders/triggers the rendering of the main view on client
+      it also the has the controller function to make ajex call to github to specify which personally associated repo to listen to.
+
+    eventListView and eventEntryView:
+      the first contains the second, and together they form the view of the list of events.
+
+  Models:
+    the app model:
+      At initialization it establishes the connection with server and sets event listener for incoming events.
+
+      addNewEvent: it adds new event to the the eventCollection.
+
+
+
+
+
+
+
 ## Requirements
 
 - Node 0.10.x

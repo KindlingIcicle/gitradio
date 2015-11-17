@@ -14,7 +14,7 @@ var eventListView  = Backbone.View.extend({
   },
 
   render : function(){
-    //go though all the existing events(for now, they are mostly demo events)
+    //go though all the existing events(for now, they are mostly useful for existing demo events)
     //and render each event's view and append them to the ul tag in reverse order;
     var renderedEvents =this.collection.map(function(eventModel){
       return new eventEntryView({model : eventModel}).$el;

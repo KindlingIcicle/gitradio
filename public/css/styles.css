@@ -37,8 +37,15 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:active {
+  position: relative;
+  top: -2px;
+  left: -2px;
+}
 
+.allenModeOn{
+  color: green;
+  text-shadow: 0px 0px 1px green;
 }
 
 
@@ -104,6 +111,12 @@ p{
   position: relative;
   top: 0.5em;
 }
+
+.eventTime{
+  font-style: italic;
+  font-weight: 900;
+}
+
 .eventEntry{
   position: relative;
   clear: both;
