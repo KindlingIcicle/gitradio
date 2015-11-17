@@ -1,4 +1,4 @@
-# kindlingicicle
+# Github bling
 
 Get updates on git repositories in real-time with auditory updates. 
 
