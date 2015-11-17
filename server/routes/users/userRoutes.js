@@ -1,3 +1,8 @@
+// -------------------------------------------------------------
+// EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+// User database
+// -------------------------------------------------------------
+
 var userController = require('./userController.js');
 
 module.exports = function (app) {

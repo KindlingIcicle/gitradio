@@ -1,3 +1,9 @@
+// -------------------------------------------------------------
+// EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+// User database
+// -------------------------------------------------------------
+
+
 var User = require('./userModel.js');
 
 module.exports = {

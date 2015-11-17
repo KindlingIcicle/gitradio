@@ -16,6 +16,13 @@ var PORT = process.env.PORT || 3000;
 //=====  SOCKET CONNECTION  =======//
 require('./server/sockets')(io);
 
+
+// -------------------------------------------------------------
+// EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+//  * Create a 'users' database to store OAuth tokens
+//  * Passport auth with github strategy
+// -------------------------------------------------------------
+
 //=====  DATABASE SETUP  =======//
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/kindlingicicle');

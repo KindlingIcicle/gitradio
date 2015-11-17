@@ -12,6 +12,19 @@ module.exports = function(app, express, io) {
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
 
+  //serve static directory
+  app.use(express.static(__dirname + '/../public'));
+
+  //routing for git events
+  app.use('/githubCallbackURL', gitRouter);
+  require('./routes/gitRoutes.js')(gitRouter, io);
+  
+  // -------------------------------------------------------------
+  // EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+  // * Set up routes for Github oauth token creation
+  // * Set up routes for mongo db
+  // -------------------------------------------------------------
+
   // set up passport
   app.use(passport.initialize());
   app.use(passport.session());
@@ -39,15 +52,9 @@ module.exports = function(app, express, io) {
     });
   });
 
-  //serve static directory
-  app.use(express.static(__dirname + '/../public'));
-
   //db api routes
   var userRouter = express.Router();
   app.use('/api/users', userRouter);
   require('./routes/users/userRoutes.js')(userRouter);
 
-  //routing for git events
-  app.use('/githubCallbackURL', gitRouter);
-  require('./routes/gitRoutes.js')(gitRouter, io);
 };

@@ -1,3 +1,8 @@
+// -------------------------------------------------------------
+// EXPERIMENTAL FEATURE: USER-SUBMITTED WEBHOOK CREATION
+// User database
+// -------------------------------------------------------------
+
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
