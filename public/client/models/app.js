@@ -7,17 +7,16 @@ var app = Backbone.Model.extend({
 
 //binds addNewEvent function to be called form within socket listener
     var newEvent = this.addNewEvent.bind(this);
-
     socket.on('event', function(event) {
-
-//Plays the approprite sound if assigned/available - if not, plays the default sound
-    var lib = params.library.get('loaded');
-      if (lib[event.type]) {
-        params.library.playSound(lib[event.type]);
-      } else {
-        //play default
-        params.library.playSound(lib['default']);
-      }
+      console.log(event);
+  //Plays the approprite sound if assigned/available - if not, plays the default sound
+      var lib = params.library.get('loaded');
+        if (lib[event.type]) {
+          params.library.playSound(lib[event.type]);
+        } else {
+          //play default
+          params.library.playSound(lib['default']);
+        }
       
 //Updates the visual feed
       newEvent({data:event});
