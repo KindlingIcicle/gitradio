@@ -19,8 +19,7 @@ Get real-time updates on repositories with auditory updates.
 
 ## Usage
 
-Combine this with a repo to make git audio. You'll need to create a custom hook inside of git,
-create a server that has this repo. And then open the client to listen to updates. 
+Combine this with a repo to get auditory updates on your repository. You'll need to create a custom hook inside of git, create a server that has this repo. And then open the client to listen to updates. 
 
 To change/update view on new event:
 

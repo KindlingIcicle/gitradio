@@ -18,28 +18,20 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Github bling ##
    
-  Get updates on git repositories in real-time with auditory updates. 
+  Get auditory updates on git repositories in real-time. 
 
 ## Problem ##
 
-  Work is happening in real-time on your repository. You should have a way to know what's going on without changing screens. 
+  Work is happening in real-time on your repository. Shouldn't you have an easy way to get notifications? 
 
 ## Solution ##
 
-  Use ambient noise to notify and motivate you of your team's progress.
-
-## Quote from spokesperson ##
-
-  "Developers love writing code, but they also like to keep track of the status of the project. With AmbientGit, you'll get notifications without breaking from your flow.""
+  Use ambient noise to notify you about your team's progress.
 
 ## How to Get Started ##
 
-  Load up a project, and experience the music.
+  Load up a github project. Create a webhook. Enjoy the updates! 
 
 ## Customer Quote ##
 
-  I love Github bling. It's simple and helps me know what everyone else is doing. 
-
-## Closing and Call to Action ##
-
-  Try Github bling and enjoy the notifications. 
+  "I love Github bling. It's simple and helps me know what everyone else is doing."
