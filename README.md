@@ -14,7 +14,6 @@ Github bling - integrating your project workflow into your environment.
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
@@ -60,11 +59,6 @@ component of the client:
       addNewEvent: it adds new event to the the eventCollection.
 
 
-
-
-
-
-
 ## Requirements
 
 - Node 0.10.x
@@ -82,6 +76,8 @@ component of the client:
 - Mocha
 - Chai
 - Sinon
+
+Note: tests still need to be written
 
 ### Installing Dependencies
 
