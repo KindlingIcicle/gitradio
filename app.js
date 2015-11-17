@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var passport = require('passport');
 var GithubStrategy = require('passport-github2').Strategy;
+var session = require('express-session');
 var ids = require('./server/oauth.js');
 var User = require('./server/routes/users/userModel.js');
 
@@ -25,8 +26,6 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user, done) {
-  console.log(user);
-  console.log(obj);
   done(null, obj);
 });
 
@@ -38,11 +37,11 @@ passport.use(new GithubStrategy({
 
   // Auth a new user
   function (accessToken, refreshToken, profile, done) {
-    console.log(profile);
     var user = {
       name: profile._json.name,
       avatar_url: profile._json.avatar_url,
-      login: profile._json.login
+      login: profile._json.login,
+      token: accessToken
     };
 
     // Store the user in database

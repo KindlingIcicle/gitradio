@@ -27,10 +27,9 @@ module.exports = function (app, io) {
 
     // Pass the event to client via sockets
     io.emit('event', event);
+
     // Log the event
     console.log(event);
-
-    // TODO: Store in the mongo db
 
     // Respond to Github
     res.status(200).send("Thank you!");

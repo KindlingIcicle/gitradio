@@ -18,9 +18,9 @@ module.exports = function(app, express, io) {
 
   // auth routes
   app.get('/auth/github',
-    passport.authenticate('github', {scope: [ 'user:email' ] }),
+    passport.authenticate('github', {scope: [ 'user:email', 'admin:repo_hook' ] }),
     function (req, res) {
-      // Go to Github to resolve
+      // This goes to Github to resolve
   });
 
   app.get('/auth/github/callback',
@@ -35,42 +35,17 @@ module.exports = function(app, express, io) {
 
   app.get('/logout', function(req, res) {
   req.session.destroy(function(err) {
-    res.redirect('/');
+    res.redirect('/login');
     });
   });
 
-  // app.post('/newHook', function (req, res) {
-
-  //   var newurl = 'https://api.github.com/repos/whatrocks/whatrocks.github.io/hooks';
-  //   var jsonObj = {
-  //     "name": "web",
-  //     "active": true,
-  //     "events": [
-  //       "push",
-  //       "pull_request"
-  //     ],
-  //     "config": {
-  //       "url": "http://9567e799.ngrok.io/githubCallbackURL",
-  //       "content_type": "json"
-  //     }
-  //   };
-  //   req.header['User-Agent'] = 'whatrocks';
-  //   req.body = jsonObj;
-  //   console.log(req.header);
-  //   request(newurl).pipe(res);
-
-  // });
-
   //serve static directory
   app.use(express.static(__dirname + '/../public'));
-  
 
-  // NOTE: May not need the database at all?
-  //db routes
+  //db api routes
   var userRouter = express.Router();
   app.use('/api/users', userRouter);
   require('./routes/users/userRoutes.js')(userRouter);
-
 
   //routing for git events
   app.use('/githubCallbackURL', gitRouter);

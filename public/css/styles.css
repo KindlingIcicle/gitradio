@@ -57,6 +57,13 @@ form {
   margin: 4em auto;
 }
 
+.getUserName{
+  font-size: 3em;
+  margin: auto auto;
+  display: block;
+  width: 80%
+}
+
 .getRepoName{
   font-size: 3em;
   margin: auto auto;

@@ -3,62 +3,76 @@ var appView = Backbone.View.extend({
   //the appView will be anchored on to the div tag with class 'mainAppView' on the index.html
   el: '.mainAppView',
 
-  //experimental feature: add a form to help user to choose which personally associated repo to listen to
-  // formToPickRepo : _.template(
-  //   '<form class  = "repoPickForm">\
-  //     <input class = "getRepoName"><br>\
-  //     <button class = "pickRepoButton">pick repo</button>\
-  //   </form>'
-  //   ),
+  formToPickRepo : _.template(
+    '<form>\
+      <input class = "getUserName" placeholder="User_name"><br>\
+      <input class = "getRepoName" placeholder="Repo_name"><br>\
+      <button class = "pickRepoButton">tune into repo</button>\
+    </form>'
+    ),
 
   initialize : function () {
     //create the eventListView to manage all the events as soon as the appView is instantiated:
     this.eventListView = new eventListView({collection : this.model.get("eventList")});
     this.render();
-  //experimental feature: to send http request to github for picking specific repo to listen to 
-  //   var mainAppView = this;
-  //   $('.switchMode').on('click', function(){
-  //     var button = $(this);
-  //     allenModeOn = button.hasClass('allenModeOn');
-  //     if (allenModeOn){
-  //       button.removeClass('allenModeOn');
-  //     } else {
-  //       button.addClass('allenModeOn');
-  //     }
-  //     mainAppView.model.audioLibChange();
-  //   });
+    var mainAppView = this;
+    $('.switchMode').on('click', function(){
+      mainAppView.model.audioLibChange();
+    });
 
-  //   var jsonObj = {
-  //    "name": "web",
-  //    "active": true,
-  //    "events": [
-  //      "watch",
-  //      "pull_request"
-  //    ],
-  //    "config": {
-  //      "url": "http://a269aaba.ngrok.io/githubCallbackURL",
-  //      "content_type": "json"
-  //    }
-  //  };
+    var jsonObj = {
+     "name": "web",
+     "active": true,
+     "events": [
+       "*",
+     ],
+     "config": {
+       "url": "http://9567e799.ngrok.io/githubCallbackURL",
+       "content_type": "json"
+     }
+   };
 
-  //   $('.pickRepoButton').on('click', function(event){
-  //     event.preventDefault();
-  //     var repoName = $('.getRepoName').val();
-  //     $.ajax({
-  //       url: "https://api.github.com/repos/way0750/"+repoName+"/hooks",
-  //       method: 'POST',
-  //       data: jsonObj,
-  //       success : function(data){
-  //         console.log('we got the respond from github:', data);
-  //         $('.repoPickForm').hide();
-  //       },
-  //       error : function(data){
-  //         console.log('github not happy');
-  //       }
-  //     }).done(function(data) {
-  //       console.log('got it',data);
-  //     });
-  //   });
+   var access_token;
+
+    $('.pickRepoButton').on('click', function(event){
+      event.preventDefault();
+      var userName = $('.getUserName').val();
+      var repoName = $('.getRepoName').val();
+      
+      // Outer request: grab the user's oauth token from our database
+      $.ajax({
+      url: 'http://9567e799.ngrok.io/api/users/' + userName,
+      method: 'GET',
+      success: function (data) {
+        access_token = data.token;
+
+        // Inner request: register a new webhook with Github
+        $.ajax({
+          url: "https://api.github.com/repos/" + userName + "/" + repoName+"/hooks?access_token=" + access_token,
+          method: 'POST',
+          data: JSON.stringify(jsonObj),
+          success : function(data){
+            console.log('we got the respond from github:', data);
+            $('.getUserName').val('');
+            $('.getRepoName').val('');
+          },
+          error : function(data){
+            console.log(data);
+            $('.getUserName').val('Ouch!');
+            $('.getRepoName').val('That didn\'t work, buddy');
+          }
+        }).done(function(data) {
+          console.log('got it',data);
+        });
+
+
+      },
+      error: function (data) {
+        console.log("error");
+      }
+      });
+
+    });
   },
 
   render : function(){
