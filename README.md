@@ -68,7 +68,6 @@ component of the client:
 - Socket.io
 - Underscore
 - Jquery
-- Mongoose / Mongo
 - Bower
 
 ## Development
