@@ -1,27 +1,18 @@
 var soundModel = Backbone.Model.extend({
   initialize: function(params) {
-    //set soundLibrary (directory name in assets) to default
     this.set('soundLibrary', 'default');
-   
-   //initialize new Audio Context
+
     this.set('context', function() {
       return new AudioContext();
     }());
 
-  //cache of sounds to be played by browser
     this.set('loaded', {});
-
-    //set data to the data passed into soundModel
     this.set('data', params.data);
-
-    //load currentLibrary
     this.loadLibrary(this.get('soundLibrary'));
   },
 
-  //should be changed to toggle
   changeLib : function () {
-    var newLibrary = this.get('soundLibrary') === 'default' ? 'allen' : 'default';
-    this.set('soundLibrary', newLibrary);
+    this.set('soundLibrary', 'allen');
   },
 
   bufferLoader: null,
@@ -33,7 +24,7 @@ var soundModel = Backbone.Model.extend({
     this.loadSounds(context, data, lib);
   },
 
-//Function to load sounds - takes audio context, a soundMap object (data) and the library
+//Function to load sounds - takes audio context, a soundMap
   loadSounds: function (context, soundMap, lib) {
   
     var names = [];
@@ -57,7 +48,7 @@ var soundModel = Backbone.Model.extend({
       paths,
       storeSounds
       );
-    }(context, paths, storeSounds), this);
+    }(context, paths, storeSounds));
 
     this.get('bufferLoader').load();
   },
