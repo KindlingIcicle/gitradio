@@ -2,40 +2,6 @@
 SOUND INIT - BufferLoader model?
 ==========================*/
 // for loading audio data - pass in the object to attach sounds to
-var loadSounds = function (obj, soundMap, callback) {
-  // Array-ify
-  var names = [];
-  var paths = [];
-
-  //pushes sounds into arrays
-  for (var name in soundMap) {
-    var path = soundMap[name];
-    names.push(name);
-    paths.push(path);
-  }
-
-  //creates a new bufferLoader
-  bufferLoader = new BufferLoader(context, paths, function(bufferList) {
-    for (var i = 0; i < bufferList.length; i++) {
-      var buffer = bufferList[i];
-      var name = names[i];
-      obj[name] = buffer;
-    }
-    //perform callback
-    if (callback) {
-      callback();
-    }
-  });
-  bufferLoader.load();
-};
-
-var playSound = function (buffer, time) {
-  var source = context.createBufferSource();
-  source.buffer = buffer;
-  source.connect(context.destination);
-  source.start(time);
-};
-
 var BufferLoader = function (context, urlList, callback) {
   this.context = context;
   this.urlList = urlList;
