@@ -1,6 +1,6 @@
 # kindlingicicle
 
-Github bling - integrating your project workflow into your environment.
+Get updates on git repositories in real-time with auditory updates. 
 
 ## Team
 
