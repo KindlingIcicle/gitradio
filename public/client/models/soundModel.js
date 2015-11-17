@@ -79,7 +79,8 @@ var soundModel = Backbone.Model.extend({
       'pull_request' : bufferList[0],
       'fork' : bufferList[1],
       'watch' : bufferList[2],
-      'default' : bufferList[3]
+      'default' : bufferList[3],
+      'gollum' : bufferList[4]
     });
   },
 
