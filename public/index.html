@@ -9,12 +9,17 @@
   <script src="bower_components/underscore/underscore-min.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
   
+  <!-- Buffer Loader Class for loading audio -->
+  <script src="./client/audio-helpers.js"></script>
+
+  <script src="client/data/data.js"></script>
   <script src="client/views/appView.js"></script>
   <script src="client/views/eventEntryView.js"></script>
   <script src="client/views/eventListView.js"></script>
   
   <script src="client/models/app.js"></script>
   <script src="client/models/eventModel.js"></script>
+  <script src="client/models/soundModel.js"></script>
   <script src="client/collections/eventCollection.js"></script>
   
   <script src="/socket.io/socket.io.js"></script>
@@ -36,11 +41,6 @@
   <!-- this is where the app will rendered and re-rendered -->
   </div>
 
-  <!-- Buffer Loader Class for loading audio -->
-  <script src="./client/audio-helpers.js"></script>
-  <!-- actual script loading the audio stuff -->
-  <script src="./client/sound.js"></script>
-
 </body>
 
  <script type="text/javascript">
@@ -56,15 +56,14 @@
       repo_url: 'http://fake.com'
     };
 
-  // start the backbone here
-  
   //backbone collection for all events:
-
   var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
 
+  //initialize default songlibrary
+  var library = new soundModel({data: soundData});
 
   //initiate the main app and its corresponding view here
-  var gitEventApp = new app({eventList : gitEventCollection});
+  var gitEventApp = new app({eventList : gitEventCollection, library: library});
   var gitEventAppView = new appView({model : gitEventApp});
 
   </script>
