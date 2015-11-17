@@ -16,5 +16,9 @@ var soundData = {
   'default': {
     path: "../../assets/",
     event: "/default.wav"
+  },
+  'gollum': {
+    path: "../../assets/",
+    event: "/gollum.wav"
   }
 };
