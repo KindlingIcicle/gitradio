@@ -1,63 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/underscore/underscore-min.js"></script>
-  <script src="bower_components/backbone/backbone-min.js"></script>
-  
-  <!-- Buffer Loader Class for loading audio -->
-  <script src="./client/audio-helpers.js"></script>
-
-  <!--  -->
-  <script src="client/data/data.js"></script>
-  <script src="client/views/appView.js"></script>
-  <script src="client/views/eventEntryView.js"></script>
-  <script src="client/views/eventListView.js"></script>
-  
-  <script src="client/models/app.js"></script>
-  <script src="client/models/eventModel.js"></script>
-  <script src="client/models/soundModel.js"></script>
-  <script src="client/collections/eventCollection.js"></script>
-  
-  <script src="/socket.io/socket.io.js"></script>
-
   <meta charset="UTF-8">
-  <title>GitHub Blink</title>
+  <title>GitRad.io</title>
 </head>
 <body>
   <header class="headerArea">
-    <h1 class="logo">GitHub Bling</h1>
-    <span class = 'quote'>To Stay Sane, Commit More Often</span>
-
-    <button class = "switchMode">Toggle Sound Library</button>
+    <h1 class="logo">GitRad.io</h1>
+    <!-- <button class="toggleLib">Toggle Sound Library</button> -->
   </header>
-
   <div class="mainAppView">
-  <!-- this is where the app will rendered and re-rendered -->
   </div>
-
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 
+<!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/backbone/backbone-min.js"></script>
+
+<!-- Buffer Loader Class for loading audio -->
+<script src="./client/audio-helpers.js"></script>
+
+<!--  -->
+<script src="client/data/data.js"></script>
+<script src="client/views/appView.js"></script>
+<script src="client/views/eventEntryView.js"></script>
+<script src="client/views/eventListView.js"></script>
+
+<script src="client/models/app.js"></script>
+<script src="client/models/eventModel.js"></script>
+<script src="client/models/soundModel.js"></script>
+<script src="client/collections/eventCollection.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
  <script type="text/javascript">
 
  //demo data
-  var fakeEvent = {
-      type: 'thumb check',
-      time: '10/10/10 : 10:10:10',
-      user: 'allen',
-      user_url: 'http://fake.com',
-      user_avatar_url: 'assets/allen003.png',
-      repo: 'repo of nothingness',
-      repo_url: 'http://fake.com'
-    };
+  // var fakeEvent = {
+  //     type: 'thumb check',
+  //     time: '10/10/10 : 10:10:10',
+  //     user: 'allen',
+  //     user_url: 'http://fake.com',
+  //     user_avatar_url: 'assets/allen003.png',
+  //     repo: 'repo of nothingness',
+  //     repo_url: 'http://fake.com'
+  //   };
 
   //backbone collection for all events:
-  var gitEventCollection = new eventCollection([{data : fakeEvent}, {data : fakeEvent}]);
+  var gitEventCollection = new eventCollection([]);
 
   //initialize library with data.js - data.js holds event information & file format info for the assets
   var library = new soundModel({data: soundData});

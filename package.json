@@ -1,19 +1,17 @@
 {
-  "name": "kindling-icicle",
+  "name": "git-radio",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
-  },
+  "scripts": {},
   "author": "",
-  "license": "ISC",
-  "cacheDirectories": ["node_modules", "public/bower_components"],
+  "license": "MIT",
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "dependencies": {
     "body-parser": "^1.14.1",
-    "bower": "^1.6.5",
     "express": "^4.13.3",
-    "mongoose": "^4.2.5",
     "socket.io": "^1.3.7"
   }
 }

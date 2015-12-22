@@ -22,38 +22,6 @@ var appView = Backbone.View.extend({
     $('.switchMode').on('click', function(){
       mainAppView.model.get('library').toggleLib();
     });
-
-    var jsonObj = {
-     "name": "web",
-     "active": true,
-     "events": [
-       "watch",
-       "pull_request"
-     ],
-     "config": {
-       "url": "http://a269aaba.ngrok.io/githubCallbackURL",
-       "content_type": "json"
-     }
-   };
-
-    $('.pickRepoButton').on('click', function(event){
-      event.preventDefault();
-      var repoName = $('.getRepoName').val();
-      console.log(repoName);
-      $.ajax({
-        url: "https://api.github.com/repos/way0750/"+repoName+"/hooks",
-        method: 'POST',
-        data: jsonObj,
-        success : function(data){
-          console.log('we got the respond from github:', data);
-        },
-        error : function(data){
-          console.log('github not happy');
-        }
-      }).done(function(data) {
-        console.log('got it',data);
-      });
-    });
   },
 
   render : function(){
@@ -68,7 +36,7 @@ var appView = Backbone.View.extend({
 
 
 /*
-  //experimental feature: to send http request to github for picking specific repo to listen to 
+  //experimental feature: to send http request to github for picking specific repo to listen to
 //This goes in initialize
 
 //   var jsonObj = {

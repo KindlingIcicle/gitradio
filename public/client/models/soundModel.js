@@ -3,7 +3,7 @@ var soundModel = Backbone.Model.extend({
   initialize: function(params) {
     //sets soundLibrary (directory name in assets) to default
     this.set('soundLibrary', 'default');
- 
+
     //initializes new AudioContext for Web Audio API
     this.set('context', function() {
       return new AudioContext();

@@ -2,6 +2,7 @@ var eventListView  = Backbone.View.extend({
 
   //instantiate each entry view here
   tagName : 'ul',
+  className: 'feed',
 
   initialize : function () {
     //initially render any data, mostly the demo data.
