@@ -1,4 +1,4 @@
-var soundModel = Backbone.Model.extend({
+var SoundModel = Backbone.Model.extend({
 
   initialize: function(params) {
     //sets soundLibrary (directory name in assets) to default

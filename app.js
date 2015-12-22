@@ -22,4 +22,3 @@ require('./server/middleware.js')(app, express, io);
 http.listen(PORT, function() {
   console.log('listening on *:', PORT);
 });
-
