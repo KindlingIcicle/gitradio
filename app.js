@@ -11,10 +11,6 @@ var PORT = process.env.PORT || 3000;
 //=====  SOCKET CONNECTION  =======//
 require('./server/sockets')(io);
 
-//=====  DATABASE SETUP  =======//
-//var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/kindlingicicle');
-
 //=====  MIDDLEWARE  =======//
 require('./server/middleware.js')(app, express, io);
 
