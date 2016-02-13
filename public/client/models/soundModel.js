@@ -3,7 +3,7 @@ var soundModel = Backbone.Model.extend({
   initialize: function(params) {
     //sets soundLibrary (directory name in assets) to default
     this.set('soundLibrary', 'default');
- 
+
     //initializes new AudioContext for Web Audio API
     this.set('context', function() {
       return new AudioContext();
@@ -22,7 +22,7 @@ var soundModel = Backbone.Model.extend({
 //initializes bufferLoader to be used by loadSounds
   bufferLoader: null,
 
-//Function to toggle between sound libraries - TODO: ability to switch between more than two
+//Toggles between sound libraries
   toggleLib : function () {
     if (this.get('soundLibrary') === 'default') {
       this.set('soundLibrary', 'allen');
@@ -73,7 +73,7 @@ var soundModel = Backbone.Model.extend({
     this.get('bufferLoader').load();
   },
 
-  //stores sound in model's loaded object - TODO: refactor to use names in loadSounds somehow
+  //stores sound in model's loaded object
   storeSounds : function (bufferList) {
     this.set('loaded', {
       'pull_request' : bufferList[0],
