@@ -9,6 +9,7 @@ const EventList = ({ events, onEventClick }) => (
                   onClick={() => onEventClick(event.id)}
                 />
      )}
+     test
   </ul>
 )
 

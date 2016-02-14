@@ -13,8 +13,11 @@ import App from './components/App'
 let store = createStore(gitRadioApp);
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <div>
+    <h1>GitRadio</h1>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </div>,
   document.getElementById('root')
 )
