@@ -1,7 +1,8 @@
 module.exports = {
   entry: './client/index.js',
   output: {
-    filename: 'public/bundle.js',
+    path: './public/',
+    filename: 'bundle.js',
     publicPath: '/public/',
   },
   module: {
@@ -16,4 +17,7 @@ module.exports = {
       },
     ],
   },
+  node: {
+   fs: "empty"
+  }
 };

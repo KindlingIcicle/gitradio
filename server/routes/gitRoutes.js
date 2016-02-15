@@ -16,7 +16,7 @@ module.exports = function (app, io) {
     };
 
     var event = {
-      type: head['x-github-event'],
+     event_type: head['x-github-event'],
       time: formatTime(time),
       user: body.sender.login,
       user_url: body.sender.html_url,

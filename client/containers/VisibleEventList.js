@@ -3,24 +3,25 @@ import { connect } from 'react-redux'
 // import the component to connect
 import EventList from '../components/EventList'
 // import action for component
-import addEvent from '../actions'
+import { addEvent } from '../actions'
 // import io
-import io from 'socket.io-client'
+//import io from 'socket.io-client'
 
-const socket = io()
+//const socket = io()
 
 // takes store/state and returns an object to pass as props
 const mapStateToProps = (state) => {
   return {
     events: state.events,
-    socket: socket
+    //    socket: socket
   }
 }
 
+// maps onReceivedEvent with addEvent to props for use in VisibleEventList
 const mapDispatchToProps = (dispatch) => {
   return {
-    onEventClick: (id) => {
-      dispatch(addEvent(id))
+    onReceivedEvent: (event) => {
+      dispatch(addEvent(event.event_type, event.user))
     }
   }
 }

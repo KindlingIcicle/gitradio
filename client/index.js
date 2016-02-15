@@ -14,7 +14,6 @@ let store = createStore(gitRadioApp);
 
 render(
   <div>
-    <h1>GitRadio</h1>
     <Provider store={store}>
       <App />
     </Provider>

@@ -6,6 +6,9 @@
   "scripts": {},
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base ./ --hot --inline"
+  },
   "cacheDirectories": [
     "node_modules"
   ],
