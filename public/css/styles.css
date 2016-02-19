@@ -1,0 +1,35 @@
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+body {
+  background-image: -moz-radial-gradient(center, ellipse cover,  #dc2c6f 0%, #452663 100%); /* FF3.6-15 */
+  background-image: -webkit-radial-gradient(center, ellipse cover,  #dc2c6f 0%, #452663 100%); /* Chrome10-25,Safari5.1-6 */
+  background-image: radial-gradient(ellipse at center,  #dc2c6f 0%,#452663 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background-image: #dc2c6f; /* Old browsers */
+  background-attachment: fixed; /* stretch */
+  background-position: 50% 50%; /* Center */
+  background-size: cover;
+}
+
+h1 {
+  color: #fff;
+  font-size: 50px;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+h1 .username {
+  text-decoration: underline;
+}
+
+.app-container {
+  background: #242253;
+  min-height: 450px;
+  margin: 0 50px;
+  border-radius: 10px;
+}
+
+.sidebar {
+  background: #272562;
+}

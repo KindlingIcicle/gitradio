@@ -1,0 +1,8 @@
+/* Font */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+.events-container {
+  background: #272562;
+  width: 100%;
+  height: 100%
+}

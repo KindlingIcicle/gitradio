@@ -4,16 +4,16 @@ import { connect } from 'react-redux'
 import EventList from '../components/EventList'
 // import action for component
 import { addEvent } from '../actions'
-// import io
-//import io from 'socket.io-client'
+/*
+ * Note: Original thought was to pass socket connection from State
+ * to Props  here
+ */
 
-//const socket = io()
 
 // takes store/state and returns an object to pass as props
 const mapStateToProps = (state) => {
   return {
     events: state.events,
-    //    socket: socket
   }
 }
 

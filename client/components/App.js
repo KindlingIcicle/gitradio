@@ -1,4 +1,3 @@
-// import react and proptypes
 import React, { PropTypes } from 'react'
 import VisibleEventList from '../containers/VisibleEventList'
 import Greeting from './Greeting'
@@ -6,7 +5,7 @@ import Greeting from './Greeting'
 const App = () => (
   <div>
     <Greeting user='Banun'/>
-    <div>
+    <div className='app-container'>
       <VisibleEventList />
     </div>
   </div>

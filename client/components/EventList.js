@@ -2,20 +2,24 @@ import React, { PropTypes } from 'react'
 import Event from './Event'
 import io from 'socket.io-client'
 
-// create socket
+/* creates client socket connection
+ * TODO: socket connection should occur on login instead 
+ */
 const socket = io()
 
 class EventList extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.props.events.map(event =>
-                        <Event key={event.id}
-                          {...event}
-                         />
-        )}
-      </ul>
+      <div className="events-container">
+        <ul>
+         {this.props.events.map(event =>
+                         <Event key={event.id}
+                           {...event}
+                          />
+         )}
+       </ul>
+     </div>
     )
   } 
   
@@ -23,8 +27,9 @@ class EventList extends React.Component {
     super(props)
   }
 
+  // set up socket listener to dispatch action
+  //TODO: refactor to be called from container VisibleEventList
   componentWillMount() {
-    // set up socket listener to dispatch action
     socket.on('event', (event) => {
       this.props.onReceivedEvent(event)
     })
