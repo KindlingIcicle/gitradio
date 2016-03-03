@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 
 const Greeting = ({user}) => (
-  <h1>
+  <h2>
     Hi, {user}.
-  </h1>
+  </h2>
 )
 
 Greeting.propTypes = {

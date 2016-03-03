@@ -11,7 +11,7 @@ body {
   background-size: cover;
 }
 
-h1 {
+h2 {
   color: #fff;
   font-size: 50px;
   font-family: 'Lato', 'Helvetica', sans-serif;
@@ -19,7 +19,7 @@ h1 {
   text-align: center;
 }
 
-h1 .username {
+h2 .username {
   text-decoration: underline;
 }
 
@@ -32,4 +32,26 @@ h1 .username {
 
 .sidebar {
   background: #272562;
+}
+
+.welcome-container {
+  margin: 0 auto;
+  margin-top: 30vh;
+  text-align: center;
+  width: 30%;
+}
+
+.login-button {
+  background-opacity: 0 ;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 150px;
+}
+
+.login-button a {
+  color: #fff;
+  text-decoration: none;
 }
