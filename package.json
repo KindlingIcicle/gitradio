@@ -3,22 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {},
-  "author": "",
-  "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --content-base ./ --hot --inline"
   },
+  "author": "",
+  "license": "MIT",
   "cacheDirectories": [
     "node_modules"
   ],
   "dependencies": {
     "body-parser": "^1.14.1",
+    "dotenv": "2.0.0",
     "express": "^4.13.3",
+    "express-session": "1.13.0",
+    "passport": "0.3.2",
+    "passport-github2": "0.1.10",
     "react": "0.14.6",
     "react-dom": "0.14.6",
     "react-redux": "4.4.0",
     "redux": "3.3.1",
+    "request": "2.69.0",
     "socket.io": "^1.3.7"
   },
   "devDependencies": {

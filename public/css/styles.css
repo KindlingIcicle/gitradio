@@ -11,7 +11,7 @@ body {
   background-size: cover;
 }
 
-h2 {
+h1, h2 {
   color: #fff;
   font-size: 50px;
   font-family: 'Lato', 'Helvetica', sans-serif;
@@ -19,7 +19,7 @@ h2 {
   text-align: center;
 }
 
-h2 .username {
+h1 .username {
   text-decoration: underline;
 }
 
@@ -43,10 +43,10 @@ h2 .username {
 
 .login-button {
   background-opacity: 0 ;
-  border: 2px solid white;
+  border: 3px solid white;
   border-radius: 10px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 10px 10px;
   text-align: center;
   width: 150px;
 }
@@ -54,4 +54,15 @@ h2 .username {
 .login-button a {
   color: #fff;
   text-decoration: none;
+  font-weight: 600;
 }
+
+.login-button:hover {
+  background: #fff;
+  cursor: pointer;
+}
+
+.login-button:hover a {
+  color: #dc2c6f; 
+}
+

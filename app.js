@@ -1,22 +1,23 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var express = require('express');
-var io = require('socket.io')(http);
+//var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 var path = require('path');
 
 //=====  NODE_ENV  =======//
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8000;
 
 //=====  SOCKET CONNECTION  =======//
-require('./server/sockets')(io);
+//require('./server/sockets')(io);
 
 //=====  DATABASE SETUP  =======//
 //var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/kindlingicicle');
 
 //=====  MIDDLEWARE  =======//
-require('./server/middleware.js')(app, express, io);
+//require('./server/middleware.js')(app, express, io);
+require('./server/middleware.js')(app, express);
 
 //=====  SERVER  =======//
 http.listen(PORT, function() {
