@@ -13,15 +13,14 @@ passport.use(new GitHubStrategy({
 function(accessToken, refreshToken, profile, done) {
   // Emulate accessing db 
   process.nextTick(function() {
-    // do something here
-   console.log(profile);  
+    // Do whatever is needed to verify callback 
    return done(null, profile);
   });
 }));
 
 // Defines what to do to serialize
 passport.serializeUser(function(user, done){
-  done(null, user);                      
+  done(null, user.id);                      
 });
 
 // Defines what to do when deserializing
@@ -30,7 +29,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 module.exports = function (app) {
-  app.use(session({ secret:  'peter piper picked a peck of pickled peppers' }));
+  app.use(session({ secret:  'peter piper picked a peck of pickled peppers'}));
   app.use(passport.initialize());
   app.use(passport.session());
 };
