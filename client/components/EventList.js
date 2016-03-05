@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import Event from './Event'
-import io from 'socket.io-client'
+//import io from 'socket.io-client'
 
 /* creates client socket connection
  * TODO: socket connection should occur on login instead 
+ *  const socket = io()
  */
-const socket = io()
 
 class EventList extends React.Component {
 
@@ -30,9 +30,9 @@ class EventList extends React.Component {
   // set up socket listener to dispatch action
   //TODO: refactor to be called from container VisibleEventList
   componentWillMount() {
-    socket.on('event', (event) => {
-      this.props.onReceivedEvent(event)
-    })
+    //   socket.on('event', (event) => {
+    //  this.props.onReceivedEvent(event)
+    //})
   }
 }
 
