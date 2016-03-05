@@ -45,24 +45,18 @@ h1 .username {
   background-opacity: 0 ;
   border: 3px solid white;
   border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
   margin: 0 auto;
   padding: 10px 10px;
   text-align: center;
-  width: 150px;
-}
-
-.login-button a {
-  color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  width: 150px;
 }
 
 .login-button:hover {
   background: #fff;
-  cursor: pointer;
-}
-
-.login-button:hover a {
   color: #dc2c6f; 
+  cursor: pointer;
 }
 
