@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import VisibleEventList from '../containers/VisibleEventList'
 import Greeting from './Greeting'
 
-const App = () => (
+const App = ({firstName}) => (
   <div>
-    <Greeting user='Banun'/>
+    <Greeting user={firstName}/>
     <div className='app-container'>
       <VisibleEventList />
     </div>

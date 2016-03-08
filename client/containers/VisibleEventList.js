@@ -13,7 +13,7 @@ import { addEvent } from '../actions'
 // takes store/state and returns an object to pass as props
 const mapStateToProps = (state) => {
   return {
-    events: state.events,
+    events: state.events.items,
   }
 }
 

@@ -8,6 +8,8 @@ module.exports = function(router) {
   router.use('/callback', 
           passport.authenticate('github', { failureRedirect: '/' }),
           function(req, res) {
-             res.redirect('/')
+             req.session.user = req.user;
+             req.session.timestamp = Date.now();
+             res.redirect('/app')
           });
 };
