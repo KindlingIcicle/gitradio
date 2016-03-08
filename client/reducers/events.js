@@ -1,11 +1,13 @@
+import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT } from '../actions'
+
 /*
- * Event Reducer
+ * Event Reducers
  * takes the previous state, the action, and returns the next state
  * Not giving a default state here is on purpose - the default is no event
  */ 
 const event = (state, action) => {
   switch(action.type) {
-    case 'ADD_EVENT':
+    case RECEIVE_EVENT:
       // return an event object with id, user, event_type
       return {
         id: action.id,
@@ -19,19 +21,59 @@ const event = (state, action) => {
 
 /*
  * Events Reducer
+ * Use object.assign to assign current state props to new state
  */
-const events = (state = [], action) => {
+export const events = (state = {
+  isFetching: false,
+  didInvalidate: false,
+  items: []
+}, action) => {
   switch(action.type) {
-    case 'ADD_EVENT':
-      return [
+    case RECEIVE_EVENT:
+      return Object.assign({}, state, {
         // destructure state to return current state (array of events)
-        ...state,
+        items: [
+          ...state.items,
         // call Event Reducer - which returns an event
         event(undefined, action)
-      ] 
+        ]
+      }) 
+    case REQUEST_REPO_HISTORY:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false
+      })
+    case RECEIVE_REPO_HISTORY:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        items: action.events,
+        lastUpdated: action.receivedAt
+      })
     default:
       return state
   }
 }
 
-export default events
+// switches current active Repo
+export const selectedRepo = (state = 'all', action) => {
+  switch(action.type) {
+    case SELECT_REPO:
+      return action.repo
+    default:
+      return state
+  }
+}
+
+// stores repo history in state
+export const eventsByRepo = (state = {}, action) => {
+  switch(action.type) {
+    case REQUEST_REPO_HISTORY:
+    case RECEIVE_REPO_HISTORY:
+      return Object.assign({}, state, {
+        [action.repo]: events(state[action.repo], action) 
+      })
+    default:
+      return state
+  }
+}

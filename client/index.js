@@ -1,3 +1,4 @@
+//import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 // Provider store to give access to store

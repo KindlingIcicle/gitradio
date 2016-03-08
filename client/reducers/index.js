@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
-import events from './events'
+import { events, eventsByRepo, selectedRepo } from './events'
+import { currentUser } from './user'
 
 const gitRadioApp = combineReducers({
-  events
+  currentUser,
+  events,
+  eventsByRepo, 
+  selectedRepo
 })
 
 export default gitRadioApp
