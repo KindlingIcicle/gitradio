@@ -1,4 +1,6 @@
+//TODO: Refactor into separate files
 import fetch from 'isomorphic-fetch'
+
 // User Actions
 export const REQUEST_USER = 'REQUEST_USER'
 export const RECEIVE_USER = 'RECEIVE_USER'
@@ -12,9 +14,10 @@ export const requestUserProfile = () => {
 export const receiveUserProfile = (user) => {
   return {
     type: RECEIVE_USER,
-    user
+    data: user
   }
 }
+
 // Event Actions
 export const RECEIVE_EVENT = 'RECEIVE_EVENT'
 
@@ -27,7 +30,7 @@ export const receiveEvent = (event) => {
   }
 }
 
-// Repo-Feed actions
+// Repo/Event-Feed actions
 export const SELECT_REPO = 'SELECT_REPO'
 export const REQUEST_REPO_HISTORY = 'REQUEST_REPO_HISTORY'
 export const RECEIVE_REPO_HISTORY = 'RECEIVE_REPO_HISTORY'
@@ -50,21 +53,22 @@ export const receiveRepoHistory = (repo, json) => {
   return {
     type: RECEIVE_REPO_HISTORY,
     repo,
-    events: json.data.map(event => event.data),
+    // TODO: parse retrieved events
+    // events: json.data.map(event => event.data),
     receivedAt: Date.now() 
   }
 }
 
 /*
- * API Reducers
- *
+ * Async Actions 
  */
 export const fetchEvents = (repo) => {
   return (dispatch) => {
-    // inform state that API call has been initiated
+    // informs state that API call has been initiated
     dispatch(requestRepoHistory(repo))
     
-    // return a promise
+    // parses response and dispatches action on success
+    // TODO: error handling 
     return fetch(`/api/events/${repo}`)
       .then(response => response.json())
       .then(json => 

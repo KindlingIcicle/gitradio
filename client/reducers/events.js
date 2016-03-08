@@ -1,3 +1,4 @@
+// import actions
 import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT } from '../actions'
 
 /*
@@ -21,7 +22,7 @@ const event = (state, action) => {
 
 /*
  * Events Reducer
- * Use object.assign to assign current state props to new state
+ * Using Object.assign to assign current state props to new state
  */
 export const events = (state = {
   isFetching: false,
@@ -31,7 +32,7 @@ export const events = (state = {
   switch(action.type) {
     case RECEIVE_EVENT:
       return Object.assign({}, state, {
-        // destructure state to return current state (array of events)
+        // destructuring state to return current state (array of events)
         items: [
           ...state.items,
         // call Event Reducer - which returns an event
