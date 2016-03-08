@@ -2,7 +2,8 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github2');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+// TODO: properly implement storage of userProfile
+var userProfile;
 // Passport Configuration
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
@@ -14,6 +15,7 @@ function(accessToken, refreshToken, profile, done) {
   // Emulate accessing db 
   process.nextTick(function() {
     // Do whatever is needed to verify callback 
+   userProfile = profile;
    return done(null, profile);
   });
 }));
@@ -32,4 +34,8 @@ module.exports = function (app) {
   app.use(session({ secret:  'peter piper picked a peck of pickled peppers'}));
   app.use(passport.initialize());
   app.use(passport.session());
+  // temporary api routing
+  app.use('/api/currentuser', function(req, res) {
+    res.send(userProfile);
+  });
 };

@@ -1,10 +1,11 @@
 var bodyParser = require('body-parser');
 var path = require('path');
-
 // checks that user is authenticated, redirects to /login if not
 var ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  else {
+    res.redirect('/login')
+  }
 }
 
 // TODO: Move to routes to an entry file in routes/ and middleware to config/middleware
@@ -16,9 +17,9 @@ module.exports = function(app, express, io) {
     next();
   }); 
   
-  // Router for auth
+  // Routers
   var authRouter = express.Router();
-
+  
   // Setup body parser and bodyParser.json middleware
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
@@ -26,7 +27,7 @@ module.exports = function(app, express, io) {
   require('./config/config')();  
   require('./config/auth')(app); 
 
-  // Auth Routes 
+  // Auth Route 
   require('./routes/authRoutes.js')(authRouter); 
 
   app.use('/auth/', authRouter);
@@ -44,7 +45,6 @@ module.exports = function(app, express, io) {
 
   // set up router for git webhooks 
   //  var repoRouter = express.Router();
-
 
   //routing for git events
   // require('./routes/gitRoutes.js')(repoRouter, io);
