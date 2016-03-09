@@ -35,6 +35,13 @@ module.exports = function(app, express, io) {
   // Serves main App
   app.use('/app', ensureAuthenticated, express.static(__dirname + '/../public'));
 
+  app.use('/logout', function(req, res) {
+    console.log(req.session);
+    req.session.destroy();
+    console.log('logged out!');
+    res.redirect('/');
+  });
+
   // Redirects to the App page if authenticated
   app.get('/', ensureAuthenticated, function(req, res, next) {
     res.redirect('/app');

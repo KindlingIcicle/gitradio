@@ -2,7 +2,13 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github2');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-// TODO: properly implement storage of userProfile
+
+//var redis = require('redis');
+//var client = redis.createClient();
+var redisOptions = {host: '127.0.0.1', port: 6379};
+
+var RedisStore = require('connect-redis')(session);
+
 var userProfile;
 // Passport Configuration
 passport.use(new GitHubStrategy({
@@ -15,7 +21,6 @@ function(accessToken, refreshToken, profile, done) {
   // Emulate accessing db 
   process.nextTick(function() {
     // Do whatever is needed to verify callback 
-   userProfile = profile;
    return done(null, profile);
   });
 }));
@@ -31,7 +36,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 module.exports = function (app) {
-  app.use(session({ secret:  'peter piper picked a peck of pickled peppers'}));
+  app.use(session({ store: new RedisStore(redisOptions), secret:  'peter piper picked a peck of pickled peppers'}));
   app.use(passport.initialize());
   app.use(passport.session());
   // temporary api routing
