@@ -1,4 +1,5 @@
 //TODO: Refactor into separate files
+import { polyfill } from 'es6-promise'; polyfill();
 import fetch from 'isomorphic-fetch'
 
 // User Actions
@@ -78,11 +79,14 @@ export const fetchEvents = (repo) => {
   }
 }
 
+// fetches user profile from server - credentials specified to ensure cookies are sent
 export const fetchUser = () => {
   return (dispatch) => {
     dispatch(requestUserProfile)
     
-    return fetch(`/api/currentuser`)
+    return fetch(`/api/me`, {
+      credentials: 'same-origin'            
+    })
       .then(response => response.json())
       .then(json =>
             dispatch(receiveUserProfile(json))

@@ -3,31 +3,30 @@ var GitHubStrategy = require('passport-github2');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-//var redis = require('redis');
-//var client = redis.createClient();
-var redisOptions = {host: '127.0.0.1', port: 6379};
-
 var RedisStore = require('connect-redis')(session);
+var redisOptions = {host: process.env.REDIS_HOST, port: process.env.REDIS_PORT};
 
-var userProfile;
 // Passport Configuration
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL
+  callbackURL: process.env.GITHUB_CALLBACK_URL,
+  passReqToCallback: true
 },
 // 'Verify' callback - accepts credentials and invokes a callback with the user object
-function(accessToken, refreshToken, profile, done) {
+function(req, accessToken, refreshToken, profile, done) {
   // Emulate accessing db 
   process.nextTick(function() {
-    // Do whatever is needed to verify callback 
+    // Do whatever is needed to verify 
+    //TODO: build more explicit payload to be sent back so parsing occurs on server
+   console.log('verifying...');
    return done(null, profile);
   });
 }));
 
 // Defines what to do to serialize
 passport.serializeUser(function(user, done){
-  done(null, user.id);                      
+  done(null, user);                      
 });
 
 // Defines what to do when deserializing
@@ -36,11 +35,12 @@ passport.deserializeUser(function(obj, done) {
 });
 
 module.exports = function (app) {
-  app.use(session({ store: new RedisStore(redisOptions), secret:  'peter piper picked a peck of pickled peppers'}));
+  app.use(session({ 
+    store: new RedisStore(redisOptions), 
+    resave: true,
+    saveUninitialized: false, 
+    secret: process.env.SECRET
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
-  // temporary api routing
-  app.use('/api/currentuser', function(req, res) {
-    res.send(userProfile);
-  });
 };
