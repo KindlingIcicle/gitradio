@@ -4,7 +4,7 @@ module.exports = function(router) {
     if (!req.user) { 
       res.sendStatus(403); 
     } else {
-    console.log('got it! sending back req.user:', req.user.displayName);
+    console.log('got it! sending back req.user:', req.user.profile.displayName);
     res.send(req.user);
     }
   }); 
