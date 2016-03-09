@@ -15,7 +15,7 @@ export const requestUserProfile = () => {
 export const receiveUserProfile = (user) => {
   return {
     type: RECEIVE_USER,
-    data: user.profile
+    data: user
   }
 }
 

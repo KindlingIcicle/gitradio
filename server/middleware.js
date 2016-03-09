@@ -51,11 +51,15 @@ module.exports = function(app, express, io) {
   app.use(express.static(__dirname + '/../public'));
 
   // handles logout by destroying session
-  app.use('/logout', function(req, res) {
-    console.log(req.session);
-    req.session.destroy();
-    console.log('logged out!');
-    res.redirect('/login');
+  app.use('/logout', ensureAuthenticated, function(req, res) {
+    req.session.destroy(function(err) {
+      if (err) { 
+        console.error(err); 
+      } else {                   
+        console.log('logged out!');
+        res.redirect('/login');
+      }
+    });
   });
 
   // set up router for git webhooks 

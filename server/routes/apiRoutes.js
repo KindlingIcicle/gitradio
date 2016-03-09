@@ -5,7 +5,7 @@ module.exports = function(router) {
       res.sendStatus(403); 
     } else {
     console.log('got it! sending back req.user:', req.user.profile.displayName);
-    res.send(req.user);
+    res.send(req.user.profile);
     }
   }); 
 };
