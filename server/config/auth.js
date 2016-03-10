@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var RedisStore = require('connect-redis')(session);
-var redisOptions = {host: process.env.REDIS_HOST, port: process.env.REDIS_PORT};
+var redisOptions = { host: process.env.REDIS_HOST, port: process.env.REDIS_PORT };
 var GITHUB_CALLBACK_URL = process.env.GITHUB_DEV_CALLBACK_URL;
 
 if (process.env.NODE_ENV === 'PRODUCTION') {

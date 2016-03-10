@@ -70,7 +70,7 @@ export const fetchEvents = (repo) => {
     
     // parses response and dispatches action on success
     // TODO: error handling 
-    return fetch(`/api/events/${repo}`)
+    return fetch(`/api/me/repos/${repo}`)
       .then(response => response.json())
       .then(json => 
             // dispatches received event
