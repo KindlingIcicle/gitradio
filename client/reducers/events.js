@@ -48,7 +48,8 @@ export const events = (state = {
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action.events,
+        data: action.data,
+        //items: action.events,
         lastUpdated: action.receivedAt
       })
     default:

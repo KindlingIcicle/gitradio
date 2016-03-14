@@ -55,7 +55,7 @@ export const receiveRepoHistory = (repo, json) => {
     type: RECEIVE_REPO_HISTORY,
     repo,
     // TODO: parse retrieved events
-    // events: json.data.map(event => event.data),
+    data: json,
     receivedAt: Date.now() 
   }
 }
@@ -70,7 +70,9 @@ export const fetchEvents = (repo) => {
     
     // parses response and dispatches action on success
     // TODO: error handling 
-    return fetch(`/api/me/repos/${repo}`)
+    return fetch(`/api/me/repos/${repo}`, {
+      credentials: 'same-origin'            
+    })
       .then(response => response.json())
       .then(json => 
             // dispatches received event

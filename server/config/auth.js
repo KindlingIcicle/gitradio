@@ -25,13 +25,13 @@ function(req, accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
     // Do whatever is needed to verify 
     //TODO: build more explicit payload to be sent back so parsing occurs on server
-   console.log('verifying...');
-
-   var user = {
-     access_token: accessToken,
-     refresh_token: refreshToken,
-     profile: profile
-   };
+    console.log('verifying...');
+    
+    var user = {
+      access_token: accessToken,
+      refresh_token: refreshToken,
+      data: profile._json 
+    };
 
    return done(null, user);
   });
