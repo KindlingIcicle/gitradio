@@ -31,7 +31,7 @@ export const receiveEvent = (event) => {
   }
 }
 
-// Repo/Event-Feed actions
+// Event-Feed actions
 export const SELECT_REPO = 'SELECT_REPO'
 export const REQUEST_REPO_HISTORY = 'REQUEST_REPO_HISTORY'
 export const RECEIVE_REPO_HISTORY = 'RECEIVE_REPO_HISTORY'
@@ -106,3 +106,4 @@ export const fetchUser = () => {
            )
   }
 }
+

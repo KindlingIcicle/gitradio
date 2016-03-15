@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Repo from './Repo'
 
-const RepoList ({ repos, onRepoClick }) => (
+const RepoList = ({ repos, onRepoClick }) => (
   <ul>
     {repos.map(repo =>
                <Repo key={repo.id}
@@ -20,3 +20,5 @@ RepoList.propTypes = {
   }).isRequired).isRequired,
   onRepoClick: PropTypes.func.isRequired
 }
+
+export default RepoList

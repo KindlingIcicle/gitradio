@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react'
 
-const UserPanel = ({ user }) => (
+const UserPanel = () => (
   <div className='userpanel'>
-    <UserImage />
-    <UserName />
-    <Settings />
+   USER PANEL 
   </div>
 )
 
