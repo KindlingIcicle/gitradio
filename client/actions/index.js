@@ -54,8 +54,20 @@ export const receiveRepoHistory = (repo, json) => {
   return {
     type: RECEIVE_REPO_HISTORY,
     repo,
-    // TODO: parse retrieved events
-    data: json,
+    // TODO: design data for retrieved events
+    data: json.map(item => {
+      return {
+        id: item.id,
+        repo: {
+          name: item.repo.name,
+          url: item.repo.url
+        },
+        branch: item.payload.ref,
+        type: item.type,
+        user: item.actor.login,
+        createdAt: item.created_at
+      } 
+    }),
     receivedAt: Date.now() 
   }
 }
@@ -75,7 +87,6 @@ export const fetchEvents = (repo) => {
     })
       .then(response => response.json())
       .then(json => 
-            // dispatches received event
             dispatch(receiveRepoHistory(repo, json))
            )
   }

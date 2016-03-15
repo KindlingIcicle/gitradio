@@ -37,7 +37,7 @@ module.exports = function(router) {
   // Gets repo information
   router.get('/me/repos/:repo', getRequestOpts, function(req, res) {
     console.log('getting:', req.params.repo);
-    req.opts.url = GITHUB_API + 'repos/' + req.user.data.login + '/' + req.params.repo;
+    req.opts.url = GITHUB_API + 'repos/' + req.user.data.login + '/' + req.params.repo + '/events';
     console.log('from:', req.opts.url);
     makeGithubGetRequest(req, res);
   });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import the component to connect
 import EventList from '../components/EventList'
 // import action for component
-import { addEvent } from '../actions'
+import { fetchEvents } from '../actions'
 /*
  * Note: Original thought was to pass socket connection from State
  * to Props  here
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onReceivedEvent: (event) => {
       dispatch(addEvent(event.event_type, event.user))
+    },
+    requestRepoHistory: (repo) => {
+      dispatch(fetchEvents(repo))
     }
   }
 }

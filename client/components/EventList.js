@@ -33,14 +33,16 @@ class EventList extends React.Component {
     //   socket.on('event', (event) => {
     //  this.props.onReceivedEvent(event)
     //})
+    // fetch eventHistory on mount
+    this.props.requestRepoHistory('gitradio');
   }
 }
 
 
 EventList.propTypes = {
     events: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      event_type: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
       user: PropTypes.string.isRequired
     }).isRequired).isRequired,
     onReceivedEvent: PropTypes.func.isRequired

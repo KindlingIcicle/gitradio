@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
 
-const Event = ({ onReceivedEvent, event_type, user }) => (
+//TODO: handle event parsing for accurate depictions
+// This means to render we need conditionals
+const Event = ({ onReceivedEvent, type, user, repo }) => (
   <li
   >
-    @{user}
-    {event_type}
+    <span className="event_summary"> 
+      <a>@{user}</a> made a <a>{type}</a> to <a>{repo.name}</a>
+    </span>
   </li>
 )
 
 Event.propTypes = {
   //  onReceivedEvent: PropTypes.func.isRequired,
-  event_type: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired
 }
 

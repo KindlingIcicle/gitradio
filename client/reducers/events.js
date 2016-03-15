@@ -5,6 +5,7 @@ import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT 
  * Event Reducers
  * takes the previous state, the action, and returns the next state
  * Not giving a default state here is on purpose - the default is no event
+ * TODO: Create event-parsing reducer
  */ 
 const event = (state, action) => {
   switch(action.type) {
@@ -13,7 +14,7 @@ const event = (state, action) => {
       return {
         id: action.id,
         user: action.user,
-        event_type: action.event_type
+        event_type: action.type
       }
     default:
       return state
@@ -48,7 +49,7 @@ export const events = (state = {
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        data: action.data,
+        items: action.data,
         //items: action.events,
         lastUpdated: action.receivedAt
       })
@@ -58,7 +59,8 @@ export const events = (state = {
 }
 
 // switches current active Repo
-export const selectedRepo = (state = 'all', action) => {
+// TODO: change default to all
+export const selectedRepo = (state = 'gitradio', action) => {
   switch(action.type) {
     case SELECT_REPO:
       return action.repo
