@@ -1,6 +1,8 @@
 /* Fonts */
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
-
+* {
+  box-sizing: border-box;
+}
 body {
   background-image: -moz-radial-gradient(center, ellipse cover,  #dc2c6f 0%, #452663 100%); /* FF3.6-15 */
   background-image: -webkit-radial-gradient(center, ellipse cover,  #dc2c6f 0%, #452663 100%); /* Chrome10-25,Safari5.1-6 */
@@ -11,11 +13,16 @@ body {
   background-size: cover;
 }
 
+/*
+ * GENERAL APP STYLING
+ */
+
 h1, h2 {
   color: #fff;
   font-size: 50px;
   font-family: 'Lato', 'Helvetica', sans-serif;
   font-weight: 400;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -28,10 +35,96 @@ h1 .username {
   min-height: 450px;
   margin: 0 50px;
   border-radius: 10px;
+  display: flex;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; 
+  cursor: pointer;
+}
+/*
+ * EVENT FEED
+ */
+.events-container {
+  flex-grow: 1;
+  color: #272562;
+}
+
+.events-container ul {
+  background: #FEE158;
+  border-radius: 0 10px 10px 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.events-container li{
+  list-style: none; 
+  padding: 20px;
+  margin: 0;
+}
+
+.events-container li:first-child {
+  border-radius: 0 10px 0 0;
+}
+
+.events-container li:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+.events-container li a {
+  font-weight: 600;
+}
+/*
+ * SIDEBAR
+ * includes styling for User Panel and Repo List
+ */
 
 .sidebar {
   background: #272562;
+  border-radius: 10px 0 0 10px;
+  color: #48449E;
+  flex-grow: 0.25;
+}
+
+/*
+ * USER PANEL
+ */
+.userpanel {
+  border-bottom: 1px solid #2C2A65;
+  text-align: right;
+  padding: 5%;
+}
+
+.userpanel ul, .repo-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userpanel li , .userpanel li a{
+  color: #424074;
+  font-size: small;
+}
+
+.userpanel .username {
+  color: #8D8CAC;
+  font-weight: 600;
+}
+
+/*
+ * REPO LIST
+ */
+
+.repo-container li {
+  border-bottom: 1px solid #2C2A65;
+  font-weight: 600;
+  padding: 15px 0;
+  text-align: center;
 }
 
 .welcome-container {
@@ -40,6 +133,10 @@ h1 .username {
   text-align: center;
   width: 30%;
 }
+
+/*
+ * LOGIN PAGE
+ */
 
 .login-button {
   background-opacity: 0 ;

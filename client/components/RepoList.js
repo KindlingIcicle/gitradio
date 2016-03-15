@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react'
 import Repo from './Repo'
 
 const RepoList = ({ repos, onRepoClick }) => (
-  <ul>
-    {repos.map(repo =>
-               <Repo key={repo.id}
-                 {...repo}
-                 onClick={() => onRepoClick(repo.id)}
-               />
-     )} 
-  </ul>
+  <div className="repo-container">
+    <ul>
+     {repos.map(repo =>
+                <Repo key={repo.id}
+                  {...repo}
+                  onClick={() => onRepoClick(repo.id)}
+                />
+      )} 
+    </ul>
+  </div>
 )
 
 RepoList.propTypes = {

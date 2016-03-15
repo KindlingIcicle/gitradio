@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
 
-const Repo = ({ onClick, owner, name }) => (
+const Repo = ({ onRepoClick, name }) => (
   <li
-    onClick={onClick}
+    onClick={onRepoClick}
   >
-    {owner}/{name}
+    {name}
   </li>
 )
 
 Repo.propTypes = {
   onClick: PropTypes.func.isRequired,
-  owner: PropTypes.string.isRequired,
+  //  owner: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }
 

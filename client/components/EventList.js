@@ -34,6 +34,7 @@ class EventList extends React.Component {
     //  this.props.onReceivedEvent(event)
     //})
     // fetch eventHistory on mount
+    // TODO: Currently using dummy data - to sub out for selectedRepo
     this.props.requestRepoHistory('gitradio');
   }
 }

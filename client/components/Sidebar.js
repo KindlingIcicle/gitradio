@@ -4,7 +4,7 @@ import VisibleRepoList from '../containers/VisibleRepoList'
 
 const Sidebar = ({user}) => (
   <div className="sidebar">
-    <UserPanel />
+    <UserPanel user={user} />
     <VisibleRepoList />
   </div>
 ) 

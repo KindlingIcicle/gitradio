@@ -3,11 +3,11 @@ import VisibleEventList from '../containers/VisibleEventList'
 import Greeting from './Greeting'
 import Sidebar from './Sidebar'
 
-const App = ({firstName}) => (
+const App = ({firstName, username}) => (
   <div>
     <Greeting user={firstName}/>
     <div className='app-container'>
-      <Sidebar />
+      <Sidebar user={username}/>
       <VisibleEventList />
     </div>
   </div>

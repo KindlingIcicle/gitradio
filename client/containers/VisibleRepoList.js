@@ -6,9 +6,10 @@ import RepoList from '../components/RepoList'
 import { selectRepo } from '../actions'
 
 // returns an object to pass as props
+// TODO: currently dummy data. Populate with repos with created hooks
 const mapStateToProps = (state) => {
   return {
-    repos: []
+    repos: [{id: 0, name: 'one'}, {id: 1, name: 'two'}]
   }
 }
 
