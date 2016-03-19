@@ -28,13 +28,22 @@ class EventList extends React.Component {
   }
 
   // set up socket listener to dispatch action
-  //TODO: refactor to be called from container VisibleEventList
+  //TODO: remove requestRepoHistory from props and use dispatch instead 
   componentWillMount() {
     //   socket.on('event', (event) => {
     //  this.props.onReceivedEvent(event)
     //})
+    // TODO: use eventsByRepo cache
     // fetch eventHistory on mount
-    this.props.requestRepoHistory(this.props.repo);
+    this.props.requestRepoHistory(this.props.repo)
+  }
+ 
+  // handles switching
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.repo !== this.props.repo) {
+      const { dispatch, repo } = nextProps
+      this.props.requestRepoHistory(nextProps.repo)
+    }
   }
 }
 
