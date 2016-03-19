@@ -44,7 +44,7 @@ render(
         <Route path="/app" component={App}>
           <Route path="/app/feed">
             <Route path="/app/feed/:owner/:repo" component={VisibleEventList}/>
-            </Route>
+          </Route>
               <Route path="/app/repomanager" component={RepoManager}/>
         </Route>
       </Router>

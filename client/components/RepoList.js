@@ -7,7 +7,7 @@ const RepoList = ({ repos, onRepoClick }) => (
      {repos.map(repo =>
                 <Repo key={repo.id}
                   {...repo}
-                  onClick={() => onRepoClick(repo.id)}
+                  onRepoClick={onRepoClick}
                 />
       )} 
     </ul>

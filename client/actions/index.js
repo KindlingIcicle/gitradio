@@ -40,7 +40,7 @@ export const RECEIVE_REPO_HISTORY = 'RECEIVE_REPO_HISTORY'
 export const selectRepo = (repo) => {
   return {
     type: SELECT_REPO,
-    repo
+    repo: repo
   } 
 }
 

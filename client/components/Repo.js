@@ -3,16 +3,15 @@ import RepoLink from './RepoLink'
 
 const Repo = ({ onRepoClick, name, owner }) => (
   <li
-    onClick={onRepoClick}
   >
-    <RepoLink to={`/app/feed/${owner}/${name}`}>
+    <RepoLink to={`/app/feed/${owner}/${name}`} onClick={() => onRepoClick(name)}>
       {name}
     </RepoLink>
   </li>
 )
 
 Repo.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onRepoClick: PropTypes.func.isRequired,
   owner: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }
