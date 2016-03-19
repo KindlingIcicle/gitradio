@@ -16,6 +16,7 @@ import gitRadioApp from './reducers'
 import App from './containers/App'
 import VisibleEventList from './containers/VisibleEventList'
 import RepoManager from './components/RepoManager'
+import HookCreator from './components/HookCreator'
 // fetchUser action to be called 
 import { fetchUser } from './actions'
 // react-router
@@ -45,7 +46,7 @@ render(
           <Route path="/app/feed">
             <Route path="/app/feed/:owner/:repo" component={VisibleEventList}/>
           </Route>
-              <Route path="/app/repomanager" component={RepoManager}/>
+              <Route path="/app/repomanager" component={HookCreator}/>
         </Route>
       </Router>
     </Provider>

@@ -17,7 +17,7 @@ body {
  * GENERAL APP STYLING
  */
 
-h1, h2 {
+h1, h2, h3 {
   color: #fff;
   font-size: 50px;
   font-family: 'Lato', 'Helvetica', sans-serif;
@@ -88,7 +88,9 @@ a:hover {
   background: #272562;
   border-radius: 10px 0 0 10px;
   color: #48449E;
-  flex-grow: 0.25;
+  max-width: 250px;
+  min-width: 150px;
+  flex-grow: 0.25; 
 }
 
 /*
@@ -160,4 +162,50 @@ a:hover {
   color: #dc2c6f; 
   cursor: pointer;
 }
+
+/*
+ * CHANNEL/HOOK CREATOR
+ */ 
+
+.creator-intro {
+  text-align: center;
+}
+
+.creator-intro h3{
+  color: #C1C0DC; 
+  font-size: 30px;
+}
+
+.creator-intro .create-tagline {
+  color: #4D4E99;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.creator-container .search-bar {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.search-bar input[type="text"] {
+  background: none;
+  border: 2px solid #272562;
+  color: #4D4E99;
+  font-style: italic;
+  min-width: 350px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.search-bar input[type="text"]::-webkit-input-placeholder {
+  color: #4D4E99;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #4D4E99;
+}
+
 
