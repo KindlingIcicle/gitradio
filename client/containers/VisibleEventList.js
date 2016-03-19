@@ -14,8 +14,10 @@ import { fetchEvents } from '../actions'
 const mapStateToProps = (state) => {
   return {
     events: state.events.items,
+    repo: state.selectedRepo
   }
 }
+
 
 // maps onReceivedEvent with addEvent to props for use in VisibleEventList
 const mapDispatchToProps = (dispatch) => {

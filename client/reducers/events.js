@@ -49,7 +49,6 @@ export const events = (state = {
         isFetching: false,
         didInvalidate: false,
         items: action.data,
-        //items: action.events,
         lastUpdated: action.receivedAt
       })
     default:
@@ -59,7 +58,7 @@ export const events = (state = {
 
 // switches current active Repo
 // TODO: change default to all
-export const selectedRepo = (state = 'gitradio', action) => {
+export const selectedRepo = (state = 'default', action) => {
   switch(action.type) {
     case SELECT_REPO:
       return action.repo
