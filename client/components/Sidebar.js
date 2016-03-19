@@ -3,7 +3,7 @@ import UserPanel from './UserPanel'
 import VisibleRepoList from '../containers/VisibleRepoList'
 
 const Sidebar = ({user}) => (
-  <div className="sidebar">
+  <div className='sidebar'>
     <UserPanel user={user} />
     <VisibleRepoList />
   </div>

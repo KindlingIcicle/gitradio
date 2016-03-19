@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 const UserPanel = ({user}) => (
   <div className='userpanel'>
-    <a className='username'>@{user}</a>
+    <Link to='/app' className='username'>@{user}</Link>
     <ul className='settings'>
-      <li>Repo Manager</li>
-      <li>Settings</li>
+      <li><Link to='/app/repomanager'>Repo Manager</Link></li>
+      <li><Link to='/app/settings'>Settings</Link></li>
       <li><a href="/logout">Sign Out</a></li>
     </ul>
   </div>

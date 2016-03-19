@@ -5,7 +5,6 @@ import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT 
  * Event Reducers
  * takes the previous state, the action, and returns the next state
  * Not giving a default state here is on purpose - the default is no event
- * TODO: Create event-parsing reducer
  */ 
 const event = (state, action) => {
   switch(action.type) {

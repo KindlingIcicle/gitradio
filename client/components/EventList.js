@@ -11,7 +11,7 @@ class EventList extends React.Component {
 
   render() {
     return (
-      <div className="events-container">
+      <div className='events-container'>
         <ul>
          {this.props.events.map(event =>
                          <Event key={event.id}

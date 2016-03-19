@@ -1,5 +1,6 @@
 //TODO: Refactor into separate files
-import { polyfill } from 'es6-promise'; polyfill();
+import { polyfill } from 'es6-promise'; 
+polyfill();
 import fetch from 'isomorphic-fetch'
 
 // User Actions

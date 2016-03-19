@@ -12,10 +12,15 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 // Reducers
 import gitRadioApp from './reducers'
-// App component
+// import components needed
 import App from './containers/App'
+import VisibleEventList from './containers/VisibleEventList'
+import RepoManager from './components/RepoManager'
 // fetchUser action to be called 
 import { fetchUser } from './actions'
+// react-router
+// TODO: refactor routes into separate routes file
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 const loggerMiddleware = createLogger()
 
@@ -35,7 +40,14 @@ store.dispatch(fetchUser()).then(() =>
 render(
   <div>
     <Provider store={store}>
-      <App />
+      <Router history={browserHistory}>
+        <Route path="/app" component={App}>
+          <Route path="/app/feed">
+            <Route path="/app/feed/:owner/:repo" component={VisibleEventList}/>
+            </Route>
+              <Route path="/app/repomanager" component={RepoManager}/>
+        </Route>
+      </Router>
     </Provider>
   </div>,
   document.getElementById('root')

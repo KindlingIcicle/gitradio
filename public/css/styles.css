@@ -49,12 +49,12 @@ a:hover {
 /*
  * EVENT FEED
  */
-.events-container {
+.main-view-container {
   flex-grow: 1;
   color: #272562;
 }
 
-.events-container ul {
+.main-view-container ul {
   background: #FEE158;
   border-radius: 0 10px 10px 0;
   margin: 0;
@@ -125,6 +125,10 @@ a:hover {
   font-weight: 600;
   padding: 15px 0;
   text-align: center;
+}
+
+.repo-container li a {
+  color: #48449E;
 }
 
 .welcome-container {

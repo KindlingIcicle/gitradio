@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Repo from './Repo'
 
 const RepoList = ({ repos, onRepoClick }) => (
-  <div className="repo-container">
+  <div className='repo-container'>
     <ul>
      {repos.map(repo =>
                 <Repo key={repo.id}
