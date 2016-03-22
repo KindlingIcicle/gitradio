@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 // import component to connect
 import HookManagerComponent from '../components/HookManager';
 
-const mapStateToProps = () => {
-  return {
-    hooks: [],
-    repos: [],
-  };
+const mapStateToProps = (state) => {
+  return state.currentUser;
 };
 
 // const mapDispatchToProps = (dispatch) => {

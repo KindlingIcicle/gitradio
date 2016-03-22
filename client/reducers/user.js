@@ -8,6 +8,8 @@ import { REQUEST_USER, RECEIVE_USER, REQUEST_USER_REPOS, RECEIVE_USER_REPOS } fr
 export const currentUser = (state = {
   isFetching: false,
   username: '',
+  repos: [],
+  hooks: [],
 }, action) => {
   switch (action.type) {
     case RECEIVE_USER:
