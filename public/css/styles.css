@@ -43,7 +43,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
   cursor: pointer;
 }
 /*
@@ -63,7 +63,7 @@ a:hover {
 }
 
 .events-container li{
-  list-style: none; 
+  list-style: none;
   padding: 20px;
   margin: 0;
 }
@@ -90,8 +90,9 @@ a:hover {
   color: #48449E;
   max-width: 250px;
   min-width: 150px;
-  flex-grow: 0.25; 
+  flex-grow: 0.25;
   box-shadow: 5px 1px 10px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
 /*
@@ -160,20 +161,20 @@ a:hover {
 
 .login-button:hover {
   background: #fff;
-  color: #dc2c6f; 
+  color: #dc2c6f;
   cursor: pointer;
 }
 
 /*
  * CHANNEL/HOOK CREATOR
- */ 
+ */
 
 .creator-intro {
   text-align: center;
 }
 
 .creator-intro h3{
-  color: #C1C0DC; 
+  color: #C1C0DC;
   font-size: 30px;
 }
 
@@ -209,4 +210,35 @@ a:hover {
   border-color: #4D4E99;
 }
 
+.search-bar input[type="text"]:focus::-webkit-input-placeholder {
+  color: #272562;
+}
 
+/*
+ * HOOK LIST
+ */
+
+.hook-list-container {
+  margin-top: 15px;
+}
+
+.hook-list-container ul {
+  background: #272562;
+  border-radius: 0 0 10px 0;
+  color: #4D4E99;
+  list-style: none;
+}
+
+.hook-list-container li {
+  font-weight: 600;
+  padding: 30px 15px;
+}
+
+.hook-container:hover  {
+  background: #242253;
+  box-shadow: inset 3px 1px 10px  rgba(0,0,0,0.2);
+}
+
+.hook-action {
+  margin: 0 5px;
+}
