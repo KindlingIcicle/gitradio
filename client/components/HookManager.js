@@ -15,12 +15,26 @@ const SearchByOwner = () => (
   </form>
 );
 
-const HookManager = ({ hooks, repos }) => (
-  <div className="creator-container">
-    { hooks.length === 0 && <CreatorIntro/> }
-    <SearchByOwner/>
-    <HookList repos={repos}/>
-  </div>
-);
+class HookManager extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    if (!this.props.repos.length) {
+      this.props.fetchRepos();
+    }
+  }
+
+  render() {
+    return (<div className="creator-container">
+      { this.props.hooks.length === 0 && <CreatorIntro/> }
+      <SearchByOwner/>
+      { this.props.isFetching ? <div className="loader">Loading</div> :
+       <HookList repos={this.props.repos}/> }
+    </div>);
+  }
+}
 
 export default HookManager;

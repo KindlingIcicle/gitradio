@@ -111,7 +111,7 @@ export const fetchEvents = (repo) => {
 // fetches user profile from server - credentials specified to ensure cookies are sent
 export const fetchUser = () => {
   return (dispatch) => {
-    dispatch(requestUserProfile);
+    dispatch(requestUserProfile());
 
     return fetch(`/api/me`, {
       credentials: 'same-origin',
@@ -126,7 +126,7 @@ export const fetchUser = () => {
 // fetches user repos from server
 export const fetchUserRepos = () => {
   return (dispatch) => {
-    dispatch(requestUserRepos);
+    dispatch(requestUserRepos());
 
     return fetch(`/api/me/repos`, {
       credentials: 'same-origin',

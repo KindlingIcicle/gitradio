@@ -17,10 +17,10 @@ import App from './containers/App';
 import VisibleEventList from './containers/VisibleEventList';
 import HookManager from './containers/HookManager';
 // fetchUser action to be called
-import { fetchUser, fetchUserRepos } from './actions';
+import { fetchUser } from './actions';
 // react-router
 // TODO: refactor routes into separate routes file
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 const loggerMiddleware = createLogger();
 
@@ -33,18 +33,19 @@ const store = createStore(
   )
 );
 
-store.dispatch(fetchUser())
-  .then(store.dispatch(fetchUserRepos()));
+store.dispatch(fetchUser());
+  // .then(store.dispatch(fetchUserRepos()));
 
 render(
   <div>
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/app" component={App}>
+          <IndexRoute components={{ feed: VisibleEventList, manager: HookManager } }/>
+          <Route path="/app/repomanager" component={HookManager}/>
           <Route path="/app/feed">
             <Route path="/app/feed/:owner/:repo" component={VisibleEventList}/>
           </Route>
-              <Route path="/app/repomanager" component={HookManager}/>
         </Route>
       </Router>
     </Provider>

@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
   return {
     events: state.events.items,
     repo: state.selectedRepo,
+    isFetching: state.events.isFetching,
   };
 };
 
