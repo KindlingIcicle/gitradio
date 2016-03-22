@@ -15,9 +15,9 @@ import gitRadioApp from './reducers';
 // import components needed
 import App from './containers/App';
 import VisibleEventList from './containers/VisibleEventList';
-import HookManager from './components/HookManager';
+import HookManager from './containers/HookManager';
 // fetchUser action to be called
-import { fetchUser } from './actions';
+import { fetchUser, fetchUserRepos } from './actions';
 // react-router
 // TODO: refactor routes into separate routes file
 import { Router, Route, browserHistory } from 'react-router';
@@ -34,9 +34,7 @@ const store = createStore(
 );
 
 store.dispatch(fetchUser())
-  .then(() => {
-  }
-);
+  .then(store.dispatch(fetchUserRepos()));
 
 render(
   <div>

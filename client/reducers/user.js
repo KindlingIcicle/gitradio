@@ -1,4 +1,4 @@
-import { REQUEST_USER, RECEIVE_USER } from '../actions';
+import { REQUEST_USER, RECEIVE_USER, REQUEST_USER_REPOS, RECEIVE_USER_REPOS } from '../actions';
 
 /*
  * User Reducer
@@ -20,6 +20,15 @@ export const currentUser = (state = {
         profileUrl: action.data.html_url,
       });
     case REQUEST_USER:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case RECEIVE_USER_REPOS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        repos: action.data,
+      });
+    case REQUEST_USER_REPOS:
       return Object.assign({}, state, {
         isFetching: true,
       });

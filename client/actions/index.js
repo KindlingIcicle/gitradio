@@ -6,6 +6,8 @@ import fetch from 'isomorphic-fetch';
 // User Actions
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const REQUEST_USER_REPOS = 'REQUEST_USER_REPOS';
+export const RECEIVE_USER_REPOS = 'RECEIVE_USER_REPOS';
 
 export const requestUserProfile = () => {
   return {
@@ -13,10 +15,23 @@ export const requestUserProfile = () => {
   };
 };
 
-export const receiveUserProfile = (user) => {
+export const receiveUserProfile = (data) => {
   return {
     type: RECEIVE_USER,
-    data: user,
+    data,
+  };
+};
+
+export const requestUserRepos = () => {
+  return {
+    type: REQUEST_USER_REPOS,
+  };
+};
+
+export const receiveUserRepos = (data) => {
+  return {
+    type: RECEIVE_USER_REPOS,
+    data,
   };
 };
 
@@ -104,6 +119,21 @@ export const fetchUser = () => {
       .then(response => response.json())
       .then(json =>
             dispatch(receiveUserProfile(json))
+          );
+  };
+};
+
+// fetches user repos from server
+export const fetchUserRepos = () => {
+  return (dispatch) => {
+    dispatch(requestUserRepos);
+
+    return fetch(`/api/me/repos`, {
+      credentials: 'same-origin',
+    })
+      .then(response => response.json())
+      .then(json =>
+            dispatch(receiveUserRepos(json))
           );
   };
 };

@@ -17,7 +17,7 @@ const SearchByOwner = () => (
 
 const HookManager = ({ hooks, repos }) => (
   <div className="creator-container">
-    { hooks.length > 0 && <CreatorIntro/> }
+    { hooks.length === 0 && <CreatorIntro/> }
     <SearchByOwner/>
     <HookList repos={repos}/>
   </div>
