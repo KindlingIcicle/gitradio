@@ -1,8 +1,9 @@
-import React, { PropTypes} from 'react'
-import { Link } from 'react-router'
+// TODO: Validate propTypes
+import React from 'react';
+import { Link } from 'react-router';
 
 const RepoLink = (props) => (
-  <Link {...props} activeStyle={{color:'white'}}/>
-)
+  <Link {...props} activeStyle={{ color: 'white' }}/>
+);
 
-export default RepoLink
+export default RepoLink;
