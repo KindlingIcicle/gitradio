@@ -1,24 +1,24 @@
 // import actions
-import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT } from '../actions'
+import { SELECT_REPO, REQUEST_REPO_HISTORY, RECEIVE_REPO_HISTORY, RECEIVE_EVENT } from '../actions';
 
 /*
  * Event Reducers
  * takes the previous state, the action, and returns the next state
  * Not giving a default state here is on purpose - the default is no event
- */ 
+ */
 const event = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_EVENT:
       // return an event object with id, user, event_type
       return {
         id: action.id,
         user: action.user,
-        event_type: action.event_type
-      }
+        event_type: action.type,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 /*
  * Events Reducer
@@ -27,54 +27,55 @@ const event = (state, action) => {
 export const events = (state = {
   isFetching: false,
   didInvalidate: false,
-  items: []
+  items: [],
 }, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_EVENT:
       return Object.assign({}, state, {
         // destructuring state to return current state (array of events)
         items: [
           ...state.items,
         // call Event Reducer - which returns an event
-        event(undefined, action)
-        ]
-      }) 
+          event(undefined, action),
+        ],
+      });
     case REQUEST_REPO_HISTORY:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
-      })
+        didInvalidate: false,
+      });
     case RECEIVE_REPO_HISTORY:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action.events,
-        lastUpdated: action.receivedAt
-      })
+        items: action.data,
+        lastUpdated: action.receivedAt,
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
 // switches current active Repo
-export const selectedRepo = (state = 'all', action) => {
-  switch(action.type) {
+// TODO: change default to all
+export const selectedRepo = (state = 'default', action) => {
+  switch (action.type) {
     case SELECT_REPO:
-      return action.repo
+      return action.repo;
     default:
-      return state
+      return state;
   }
-}
+};
 
 // stores repo history in state
 export const eventsByRepo = (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case REQUEST_REPO_HISTORY:
     case RECEIVE_REPO_HISTORY:
       return Object.assign({}, state, {
-        [action.repo]: events(state[action.repo], action) 
-      })
+        [action.repo]: events(state[action.repo], action),
+      });
     default:
-      return state
+      return state;
   }
-}
+};

@@ -1,13 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
-const Greeting = ({user}) => (
+const Greeting = ({ user }) => (
   <h2>
     Hi, {user}.
   </h2>
-)
+);
 
 Greeting.propTypes = {
-  user: PropTypes.string.isRequired
-}
+  user: PropTypes.string.isRequired,
+};
 
-export default Greeting
+export default Greeting;

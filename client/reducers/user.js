@@ -1,4 +1,4 @@
-import { REQUEST_USER, RECEIVE_USER } from '../actions'
+import { REQUEST_USER, RECEIVE_USER, REQUEST_USER_REPOS, RECEIVE_USER_REPOS } from '../actions';
 
 /*
  * User Reducer
@@ -7,23 +7,34 @@ import { REQUEST_USER, RECEIVE_USER } from '../actions'
 
 export const currentUser = (state = {
   isFetching: false,
-  username: ''
+  username: '',
+  repos: [],
+  hooks: [],
 }, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_USER:
       return Object.assign({}, state, {
         isFetching: false,
         id: action.data.id,
-        username: action.data.username,
-        name: action.data.displayName,
-        firstName: action.data.displayName.split(' ')[0],
-        profileUrl: action.data.profileUrl
-      })
+        username: action.data.login,
+        name: action.data.name,
+        firstName: action.data.name.split(' ')[0],
+        profileUrl: action.data.html_url,
+      });
     case REQUEST_USER:
       return Object.assign({}, state, {
-        isFetching: true
-      })
+        isFetching: true,
+      });
+    case RECEIVE_USER_REPOS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        repos: action.data,
+      });
+    case REQUEST_USER_REPOS:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
     default:
-      return state
+      return state;
   }
-}
+};

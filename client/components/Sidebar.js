@@ -1,14 +1,13 @@
-import React, { PropTypes } from 'react'
-import UserPanel from './UserPanel'
-import VisibleRepoList from '../containers/VisibleRepoList'
-import AddRepo from '../containers/AddRepo' 
+// TODO: Validate propTypes
+import React from 'react';
+import UserPanel from './UserPanel';
+import VisibleRepoList from '../containers/VisibleRepoList';
 
-const Sidebar = ({user}) => (
+const Sidebar = ({ user }) => (
   <div className="sidebar">
-    <UserPanel />
+    <UserPanel user={user} />
     <VisibleRepoList />
-    <AddRepo />
   </div>
-) 
+);
 
-export default Sidebar
+export default Sidebar;

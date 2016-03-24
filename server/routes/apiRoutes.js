@@ -13,13 +13,16 @@ var getRequestOpts = function(req, res, next) {
 
   req.opts = options;
   next();
-}; 
+};
 
-// middleware that makes GET request to Github. After this middleware, req.opts.url should be set
-var makeGithubGetRequest = function(req, res) {
+// middleware that makes GET request to Github. Before this middleware, req.opts.url should be set
+// TODO: auto-paginate
+var makeGithubGetRequest = function(req, res, next) {
   request(req.opts, function(error, response, body) {
     if (!error && response.statusCode === 200) {
-      res.send(body);
+      // append to req and pass to middleware
+      req.body = body;
+      next(req, res);
     } else {
       console.log('error:',error, response.statusCode);
     }
@@ -30,46 +33,57 @@ var makeGithubGetRequest = function(req, res) {
 var createGithubHook = function(req, res) {
   request.post(req.opts, function(error, response, body) {
     res.sendStatus(response.statusCode);
-  });  
+  });
 };
 
 module.exports = function(router) {
   // Gets repo information
   router.get('/me/repos/:repo', getRequestOpts, function(req, res) {
-    req.opts.url = GITHUB_API + 'repos/' + req.user.profile.username + '/' + req.params.repo;
-    makeGithubGetRequest(req, res);
+    req.opts.url = GITHUB_API + 'repos/' + req.user.data.login + '/' + req.params.repo + '/events';
+
+    makeGithubGetRequest(req, res, function(req, res) {
+      res.send(req.body);
+    });
   });
 
   // Gets list of users repos
   router.get('/me/repos', getRequestOpts, function(req, res) {
     req.opts.url = GITHUB_API + 'user/repos';
-    makeGithubGetRequest(req, res);
+
+    req.opts.params = {
+      affiliation: 'owner,collaborator,organization_member',
+      type: 'all',
+    };
+
+    makeGithubGetRequest(req, res, function(req, res, next) {
+      res.send(req.body);
+    });
   });
 
   // Gets profile of logged-in user if authenticated.
   router.get('/me', function(req, res) {
-    if (!req.user) { 
-      res.sendStatus(403); 
+    if (!req.user) {
+      res.sendStatus(403);
     } else {
-    console.log('SERVER: got it! sending back req.user:', req.user.profile.displayName);
-    res.send(req.user.profile);
+      //console.log('SERVER: got it! sending back req.user:', req.user.profile.displayName);
+      res.send(req.user.data);
     }
-  }); 
+  });
 
   // creates repo according to current user
   router.get('/me/hooks/add/:repo', getRequestOpts, function(req, res) {
-    //TODO: handle different callback_urls for different webhooks, handle SSL
+    //TODO: handle callback_url for different webhooks, handle SSL
     // config object for webhook POST
     var config = {
       url: 'CALLBACK_URL',
       content_type: 'json',
-      insecure_ssl: true 
+      insecure_ssl: true
     };
 
     // TODO: allow webhook to be created on org instead of just on user repo
     req.opts.url = GITHUB_API + 'repos/' + req.user.profile.username + '/' + req.params.repo + '/hooks';
     req.opts.json = true;
-    
+
     // TODO: allow user choosing of events to subscribe to
     req.opts.body =  {
       name: 'web',

@@ -1,17 +1,18 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
+import RepoLink from './RepoLink';
 
-const Repo = ({ onClick, owner, name }) => (
-  <li
-    onClick={onClick}
-  >
-    {owner}/{name}
+const Repo = ({ onRepoClick, name, owner }) => (
+  <li>
+    <RepoLink to={`/app/feed/${owner}/${name}`} onClick={() => onRepoClick(name)}>
+      {name}
+    </RepoLink>
   </li>
-)
+);
 
 Repo.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onRepoClick: PropTypes.func.isRequired,
   owner: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
-}
+  name: PropTypes.string.isRequired,
+};
 
-export default Repo
+export default Repo;
