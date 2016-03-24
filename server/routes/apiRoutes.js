@@ -32,6 +32,7 @@ var makeGithubGetRequest = function(req, res, next) {
 // middleware that makes POST request to create webhook on github
 var createGithubHook = function(req, res) {
   request.post(req.opts, function(error, response, body) {
+    // add to db
     res.sendStatus(response.statusCode);
   });
 };
@@ -74,21 +75,23 @@ module.exports = function(router) {
   router.get('/me/hooks/add/:repo', getRequestOpts, function(req, res) {
     //TODO: handle callback_url for different webhooks, handle SSL
     // config object for webhook POST
+    var callbackURL = '/api/' + req.params.repoOwner + '/' + req.params.repoName;
+    var defaultScopes = ['push'];
     var config = {
-      url: 'CALLBACK_URL',
+      url: callbackURL,
       content_type: 'json',
       insecure_ssl: true
     };
 
     // TODO: allow webhook to be created on org instead of just on user repo
-    req.opts.url = GITHUB_API + 'repos/' + req.user.profile.username + '/' + req.params.repo + '/hooks';
+    req.opts.url = GITHUB_API + 'repos/' + req.params.repoOwner + '/' + req.params.repo + '/hooks';
     req.opts.json = true;
 
     // TODO: allow user choosing of events to subscribe to
     req.opts.body =  {
       name: 'web',
       active: true,
-      events: ['push'],
+      events: req.params.scopes || defaultScopes,
       config: config
     };
 
