@@ -116,6 +116,7 @@ export const fetchUser = () => {
     return fetch(`/api/me`, {
       credentials: 'same-origin',
     })
+      .then((json) => {console.log(); return json;})
       .then(response => response.json())
       .then(json =>
             dispatch(receiveUserProfile(json))

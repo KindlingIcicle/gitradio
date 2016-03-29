@@ -40,7 +40,7 @@ var createGithubHook = function(req, res) {
 module.exports = function(router) {
   // Gets repo information
   router.get('/me/repos/:repo', getRequestOpts, function(req, res) {
-    req.opts.url = GITHUB_API + 'repos/' + req.user.data.login + '/' + req.params.repo + '/events';
+    req.opts.url = GITHUB_API + 'repos/' + req.user.username + '/' + req.params.repo + '/events';
 
     makeGithubGetRequest(req, res, function(req, res) {
       res.send(req.body);
@@ -67,7 +67,7 @@ module.exports = function(router) {
       res.sendStatus(403);
     } else {
       //console.log('SERVER: got it! sending back req.user:', req.user.profile.displayName);
-      res.send(req.user.data);
+      res.send(req.user);
     }
   });
 

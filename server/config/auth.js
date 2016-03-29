@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
   GITHUB_CALLBACK_URL = process.env.GITHUB_PROD_CALLBACK_URL;
 };
 
-// Passport Configuratio  n
+// Passport Configuration
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -24,31 +24,64 @@ passport.use(new GitHubStrategy({
 },
 // 'Verify' callback - accepts credentials and invokes a callback with the user object
 function(req, accessToken, refreshToken, profile, done) {
-  // Emulate accessing db
-  process.nextTick(function() {
     // Do whatever is needed to verify
     //TODO: build more explicit payload to be sent back so parsing occurs on server
     console.log('verifying...');
 
   //add to db
-    var user = {
-      access_token: accessToken,
-      refresh_token: refreshToken,
-      data: profile._json
-    };
+  //TODO: error handling
+    User.findOne({ githubID: profile.id }, function(err, user) {
+      if (err) {
+        console.log(err);
+      }
+      if (!err & user !== null) {
+        done(null, user);
+      } else {
+        // create user
+        user = new User({
+          githubID: profile.id,
+          name: profile.displayName,
+          username: profile._json.login,
+          access_token: accessToken,
+          refresh_token: refreshToken,
+          hooks: []
+        }); 
 
-   return done(null, user);
-  });
+        user.save(function(err) {
+          if (err) {
+            console.log(err); 
+          } else {
+            console.log('saving user...');
+            done(null, user);
+          }
+        });
+      }
+    });
+    
+    //    var user = {
+    // access_token: accessToken,
+    // refresh_token: refreshToken,
+    // data: profile._json
+    //    };
+
+    //return done(null, user);
 }));
 
 // Defines what to do to serialize
 passport.serializeUser(function(user, done){
-  done(null, user);
+  done(null, user._id);
 });
 
 // Defines what to do when deserializing
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    if (err) {
+      done(err, null);
+    } else {
+      console.log('found user');
+      done(null, user);
+    }
+  });
 });
 
 module.exports = function (app) {

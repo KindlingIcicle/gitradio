@@ -1,10 +1,8 @@
 var mongoose = require('mongoose');
 
+// Defines userSchema for storing in mongodb
 var userSchema = new mongoose.Schema({
-  name: {
-    first: String,
-    last: { type: String, trim: true }
-  },
+  name: String,
   access_token: String,
   refresh_token: String,
   githubID: Number,
