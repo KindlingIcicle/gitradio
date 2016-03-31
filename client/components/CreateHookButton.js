@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CreateHookButton = () => (
-  <div className="create-hook">
+const CreateHookButton = ({ isActive }) => (
+  <div className={`create-hook${isActive ? ' collapse' : ''}`}>
     <a>+</a>
   </div>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Hook from './Hook';
 
-const HookList = ({ onHookClick, children, repos }) => (
+const HookList = ({ onHookClick, repos }) => (
   <div className="hook-list-container">
     <ul>
       {repos.map(hook =>

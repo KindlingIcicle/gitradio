@@ -1,5 +1,5 @@
-// TODO: define propTypes
-import React from 'react';
+// TODO: PropTypes
+import React, { PropTypes } from 'react';
 import HookList from './HookList';
 
 const CreatorIntro = () => (

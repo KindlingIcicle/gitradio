@@ -11,6 +11,7 @@ const HookEvents = () => (
     <Checkbox defaultChecked value="pull_request_events" label="Pull Requests"/>
     <Checkbox value="deployment_events" label="Deployment"/>
     <Checkbox value="membership_events" label="Membership"/>
+    <input className="submit-button" type="submit" value="Listen"/>
   </form>
 );
 
