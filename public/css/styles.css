@@ -228,7 +228,6 @@ a:hover {
 .hook-list-container ul {
   background: #272562;
   border-radius: 0 0 10px 0;
-  color: #4D4E99;
   list-style: none;
 }
 
@@ -237,9 +236,22 @@ a:hover {
   padding: 30px 15px;
 }
 
+.hook-list-container li a {
+  color: #4D4E99;
+}
+
+.hook-list-container li a:hover {
+  text-decoration: none;
+}
+
 .hook-container:hover  {
   background: #242253;
   box-shadow: inset 3px 1px 10px  rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.hook-list-container .selected{
+  background-color: #242253;
 }
 
 .hook-action {
@@ -247,7 +259,32 @@ a:hover {
 }
 
 /*
- *
+ * ADD HOOK ANIMATION
+ */
+.create-hook {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0 4px;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transition: color 0.5s ease,
+              scale 0.2s ease;
+  -webkit-transition: color 0.5s ease,
+              scale 0.2s ease;
+}
+
+.create-hook:hover {
+  transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  color: white;
+}
+
+.create-hook a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
  * LOADING SPINNER
  *
  */

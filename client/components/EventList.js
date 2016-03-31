@@ -50,7 +50,6 @@ class EventList extends React.Component {
 
 }
 
-
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
