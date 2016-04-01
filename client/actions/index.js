@@ -116,7 +116,11 @@ export const fetchUser = () => {
     return fetch(`/api/me`, {
       credentials: 'same-origin',
     })
-      .then((json) => {console.log(); return json;})
+      .then((json) => {
+        // TODO: remove console.log - this is for checking data back from server
+        console.log(json);
+        return json;
+      })
       .then(response => response.json())
       .then(json =>
             dispatch(receiveUserProfile(json))
@@ -136,5 +140,44 @@ export const fetchUserRepos = () => {
       .then(json =>
             dispatch(receiveUserRepos(json))
           );
+  };
+};
+
+// Hook Actions
+export const CREATE_HOOK = 'CREATE_HOOK';
+export const REQUEST_HOOK_CREATION = 'REQUEST_HOOK_CREATION';
+export const RECEIVE_HOOK_CREATION_SUCCESS = 'RECEIVE_HOOK_CREATION_SUCCESS';
+
+export const createHook = (repo) => {
+  return {
+    type: CREATE_HOOK,
+    repo,
+  };
+};
+
+export const requestHookCreation = (repo) => {
+  return {
+    type: REQUEST_HOOK_CREATION,
+    repo,
+  };
+};
+
+export const receiveHookCreationSuccess = () => {
+  return {
+    type: RECEIVE_HOOK_CREATION_SUCCESS,
+  };
+};
+
+export const postNewHook = (repo) => {
+  return (dispatch) => {
+    dispatch(requestHookCreation(repo));
+
+    return fetch(`api/me/hook/create/${repo.owner}/${repo.name}`, {
+      method: 'POST',
+      credentials: 'same-origin',
+    })
+      .then((response) => {
+        console.log(response);
+      });
   };
 };

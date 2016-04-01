@@ -72,10 +72,11 @@ module.exports = function(router) {
   });
 
   // creates repo according to current user
-  router.get('/me/hooks/add/:repo', getRequestOpts, function(req, res) {
+  router.post('/me/hooks/create/:owner/:name', getRequestOpts, function(req, res) {
     //TODO: handle callback_url for different webhooks, handle SSL
     // config object for webhook POST
-    var callbackURL = '/api/' + req.params.repoOwner + '/' + req.params.repoName;
+    // creates callback URL : '/api/hooks/:username/:repoOwner/:repoName'
+    var callbackURL = '/api/hooks/' + req.user.username + '/' + req.params.repoOwner + '/' + req.params.owner + '/' + req.params.name;
     var defaultScopes = ['push'];
     var config = {
       url: callbackURL,
@@ -84,7 +85,7 @@ module.exports = function(router) {
     };
 
     // TODO: allow webhook to be created on org instead of just on user repo
-    req.opts.url = GITHUB_API + 'repos/' + req.params.repoOwner + '/' + req.params.repo + '/hooks';
+    req.opts.url = GITHUB_API + 'repos/' + req.params.owner + '/' + req.params.name + '/hooks';
     req.opts.json = true;
 
     // TODO: allow user choosing of events to subscribe to
