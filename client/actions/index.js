@@ -162,9 +162,10 @@ export const requestHookCreation = (repo) => {
   };
 };
 
-export const receiveHookCreationSuccess = () => {
+export const receiveHookCreationSuccess = (json) => {
   return {
     type: RECEIVE_HOOK_CREATION_SUCCESS,
+    data: json,
   };
 };
 
@@ -178,8 +179,8 @@ export const postNewHook = (repo) => {
       method: 'POST',
       credentials: 'same-origin',
     })
-      .then((response) => {
-        console.log(response);
-      });
+      .then(response => response.json())
+      .then(json => dispatch(receiveHookCreationSuccess(json))
+      );
   };
 };

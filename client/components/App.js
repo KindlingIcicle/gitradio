@@ -53,7 +53,7 @@ LoadedApp.propTypes = {
   firstName: PropTypes.string,
   username: PropTypes.string.isRequired,
   children: PropTypes.arrayOf(PropTypes.components),
-  hooks: PropTypes.arrayOf(PropTypes.string),
+  hooks: PropTypes.arrayOf(PropTypes.object),
   main: PropTypes.object,
   manager: PropTypes.object,
 };

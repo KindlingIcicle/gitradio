@@ -1,4 +1,5 @@
-import { REQUEST_USER, RECEIVE_USER, REQUEST_USER_REPOS, RECEIVE_USER_REPOS } from '../actions';
+import { REQUEST_USER, RECEIVE_USER, REQUEST_USER_REPOS, RECEIVE_USER_REPOS,
+RECEIVE_HOOK_CREATION_SUCCESS } from '../actions';
 
 /*
  * User Reducer
@@ -19,6 +20,7 @@ export const currentUser = (state = {
         username: action.data.username,
         name: action.data.name,
         firstName: action.data.name.split(' ')[0],
+        hooks: [...action.data.hooks],
         //        profileUrl: action.data.html_url,
       });
     case REQUEST_USER:
@@ -33,6 +35,14 @@ export const currentUser = (state = {
     case REQUEST_USER_REPOS:
       return Object.assign({}, state, {
         isFetching: true,
+      });
+    case RECEIVE_HOOK_CREATION_SUCCESS:
+      return Object.assign({}, state, {
+        hooks: [{
+          hook_id: action.data.hook_id,
+          repo: action.data.repo,
+          events: action.data.scopes,
+        }],
       });
     default:
       return state;

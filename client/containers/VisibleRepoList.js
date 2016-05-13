@@ -7,19 +7,9 @@ import { selectRepo } from '../actions';
 
 // returns an object to pass as props
 // TODO: currently dummy data. Populate with repos with created hooks
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   return {
-    repos: [
-      {
-        id: 0,
-        owner: 'banunatina',
-        name: 'gitradio',
-      },
-      {
-        id: 1,
-        owner: 'banunatina',
-        name: 'oauth-practice',
-      }],
+    repos: [...state.currentUser.hooks],
   };
 };
 

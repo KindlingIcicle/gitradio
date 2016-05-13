@@ -4,6 +4,7 @@ var User = require('../config/userSchema.js');
 
 var GITHUB_API = process.env.GITHUB_API;
 var SERVER = process.env.NODE_ENV ? process.env.PROD_SERVER : process.env.DEV_SERVER;
+
 // TODO: refactor middleware into middleware folder
 // middleware that adds options object for requests
 var getRequestOpts = function(req, res, next) {
@@ -55,7 +56,8 @@ var createGithubHook = function(req, res) {
       );
     }
 
-    res.sendStatus(response.statusCode);
+    res.statusCode = response.statusCode;
+    res.send(hookData);
   });
 };
 
@@ -105,7 +107,10 @@ module.exports = function(router) {
       res.sendStatus(403);
     } else {
       //console.log('SERVER: got it! sending back req.user:', req.user.profile.displayName);
-      res.send(req.user);
+      User.findById(req.user.id, function(error, user) {
+        req.user.hooks = user.hooks;
+        res.send(req.user);
+      });
     }
   });
 
