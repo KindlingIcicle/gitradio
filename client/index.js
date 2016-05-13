@@ -16,6 +16,7 @@ import gitRadioApp from './reducers';
 import App from './containers/App';
 import VisibleEventList from './containers/VisibleEventList';
 import HookManager from './containers/HookManager';
+import HookEvents from './components/HookEvents';
 // fetchUser action to be called
 import { fetchUser } from './actions';
 // react-router

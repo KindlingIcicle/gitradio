@@ -15,11 +15,11 @@ export const currentUser = (state = {
     case RECEIVE_USER:
       return Object.assign({}, state, {
         isFetching: false,
-        id: action.data.id,
-        username: action.data.login,
+        id: action.data.githubID,
+        username: action.data.username,
         name: action.data.name,
         firstName: action.data.name.split(' ')[0],
-        profileUrl: action.data.html_url,
+        //        profileUrl: action.data.html_url,
       });
     case REQUEST_USER:
       return Object.assign({}, state, {

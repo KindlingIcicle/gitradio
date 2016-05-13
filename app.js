@@ -4,7 +4,7 @@ var express = require('express');
 //var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 var path = require('path');
-
+var db = require('./server/db');
 //=====  NODE_ENV  =======//
 var PORT = process.env.PORT || 8000;
 

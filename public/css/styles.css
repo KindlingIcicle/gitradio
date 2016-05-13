@@ -88,8 +88,8 @@ a:hover {
   background: #272562;
   border-radius: 10px 0 0 10px;
   color: #48449E;
-  max-width: 250px;
-  min-width: 150px;
+  max-width: 200px;
+  min-width: 200px;
   flex-grow: 0.25;
   box-shadow: 5px 1px 10px rgba(0,0,0,0.2);
   z-index: 1;
@@ -228,7 +228,6 @@ a:hover {
 .hook-list-container ul {
   background: #272562;
   border-radius: 0 0 10px 0;
-  color: #4D4E99;
   list-style: none;
 }
 
@@ -237,9 +236,22 @@ a:hover {
   padding: 30px 15px;
 }
 
+.hook-list-container li a {
+  color: #4D4E99;
+}
+
+.hook-list-container li a:hover {
+  text-decoration: none;
+}
+
 .hook-container:hover  {
   background: #242253;
   box-shadow: inset 3px 1px 10px  rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.hook-list-container .selected{
+  background-color: #242253;
 }
 
 .hook-action {
@@ -247,7 +259,38 @@ a:hover {
 }
 
 /*
- *
+ * ADD HOOK ANIMATION
+ */
+.create-hook {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 22px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.create-hook a {
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+
+.create-hook:hover a{
+  transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  color: white;
+}
+
+.collapse.create-hook {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.create-hook a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
  * LOADING SPINNER
  *
  */
@@ -309,3 +352,66 @@ a:hover {
     height: 5em;
   }
 }
+
+/*
+ * Event Settings
+ */
+.events-form {
+  color: #4D4E99;
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.events-form input {
+  margin: 10px 0;
+}
+.events-form {
+  color: #4D4E99;
+  font-size: 14px;
+}
+
+.events-form .submit-button {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid #4D4E99;
+  border-radius: 3px;
+}
+
+.events-form .submit-button:hover {
+  background-color: #4D4E99;
+  color: #272562;
+  border: 2px solid #4D4E99;
+  border-radius: 3px;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+.events-form input[type="checkbox"] {
+  margin: 0px 5px;
+}
+
+/*
+.events-form input[type="checkbox"]{
+  display: none;
+}
+
+.events-form label:before {
+  border: 2px solid #4D4E99;
+  border-radius: 0;
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.events-form input[type=checkbox]:checked + label:before {
+  background-color: #4D4E99;
+  text-align: center;
+}
+*/

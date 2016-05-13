@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchRepos: () => {
       dispatch(fetchUserRepos());
     },
+    // createHook: (repo) => {
+    //   dispatch(postNewHook(repo));
+    // },
   };
 };
 
