@@ -94,11 +94,12 @@ export const receiveRepoHistory = (repo, json) => {
 export const fetchEvents = (repo) => {
   return (dispatch) => {
     // informs state that API call has been initiated
-    dispatch(requestRepoHistory(repo));
+    var repoName = repo.split('/')[1];
+    dispatch(requestRepoHistory(repoName));
 
     // parses response and dispatches action on success
     // TODO: error handling
-    return fetch(`/api/me/repos/${repo}`, {
+    return fetch(`/api/me/repos/${repoName}`, {
       credentials: 'same-origin',
     })
       .then(response => response.json())
@@ -162,9 +163,10 @@ export const requestHookCreation = (repo) => {
   };
 };
 
-export const receiveHookCreationSuccess = () => {
+export const receiveHookCreationSuccess = (json) => {
   return {
     type: RECEIVE_HOOK_CREATION_SUCCESS,
+    data: json,
   };
 };
 
@@ -178,8 +180,8 @@ export const postNewHook = (repo) => {
       method: 'POST',
       credentials: 'same-origin',
     })
-      .then((response) => {
-        console.log(response);
-      });
+      .then(response => response.json())
+      .then(json => dispatch(receiveHookCreationSuccess(json))
+      );
   };
 };
