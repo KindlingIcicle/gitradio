@@ -172,7 +172,9 @@ export const postNewHook = (repo) => {
   return (dispatch) => {
     dispatch(requestHookCreation(repo));
 
-    return fetch(`api/me/hook/create/${repo.owner}/${repo.name}`, {
+    const owner = repo.owner.login;
+
+    return fetch(`/api/me/hooks/create/${owner}/${repo.name}`, {
       method: 'POST',
       credentials: 'same-origin',
     })

@@ -1,8 +1,9 @@
 var request = require('request');
 var parseLinkHeader = require('parse-link-header');
+var User = require('../config/userSchema.js');
 
 var GITHUB_API = process.env.GITHUB_API;
-
+var SERVER = process.env.NODE_ENV ? process.env.PROD_SERVER : process.env.DEV_SERVER;
 // TODO: refactor middleware into middleware folder
 // middleware that adds options object for requests
 var getRequestOpts = function(req, res, next) {
@@ -34,7 +35,26 @@ var makeGithubGetRequest = function(req, res, next) {
 // middleware that makes POST request to create webhook on github
 var createGithubHook = function(req, res) {
   request.post(req.opts, function(error, response, body) {
-    // add to db
+    // add hook to db
+    if (!error && response.statusCode === 201) {
+
+      var hookData = {
+        repo: req.params.owner + '/' + req.params.name,
+        hook_id: body.id,
+        scopes: body.events,
+        callback_url: body.config.url
+      }
+
+      User.findOneAndUpdate({ "username": req.user.username},
+        { "$push": { "hooks": hookData } },
+        function(err, user) {
+          if (err) {
+            console.log(err);
+          }
+        }
+      );
+    }
+
     res.sendStatus(response.statusCode);
   });
 };
@@ -94,7 +114,7 @@ module.exports = function(router) {
     //TODO: handle callback_url for different webhooks, handle SSL
     // config object for webhook POST
     // creates callback URL : '/api/hooks/:username/:repoOwner/:repoName'
-    var callbackURL = '/api/hooks/' + req.user.username + '/' + req.params.repoOwner + '/' + req.params.owner + '/' + req.params.name;
+    var callbackURL = SERVER + '/api/hooks/' + req.user.username + '/' + req.params.owner + '/' + req.params.name;
     var defaultScopes = ['push'];
     var config = {
       url: callbackURL,
@@ -105,7 +125,7 @@ module.exports = function(router) {
     // TODO: allow webhook to be created on org instead of just on user repo
     req.opts.url = GITHUB_API + 'repos/' + req.params.owner + '/' + req.params.name + '/hooks';
     req.opts.json = true;
-
+    console.log(req.opts.url);
     // TODO: allow user choosing of events to subscribe to
     req.opts.body =  {
       name: 'web',

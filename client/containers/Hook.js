@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import HookComponent from './Hook';
+import HookComponent from '../components/Hook';
 // TODO: define onHookSelect
-import { onHookSelect } from '../actions';
+// import { onHookSelect } from '../actions';
+import { postNewHook } from '../actions';
+
 const mapStateToProps = () => {
   return {
     isActive: false,
@@ -10,8 +12,10 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onHookSelect: () => {
-      dispatch(onHookSelect());
+    // onHookSelect: () => {
+    //   dispatch(onHookSelect());
+    createHook: (repo) => {
+      dispatch(postNewHook(repo));
     },
   };
 };

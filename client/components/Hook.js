@@ -20,10 +20,17 @@ class Hook extends React.Component {
   }
 
   render() {
-    const { full_name } = this.props;
+    const { full_name, name, owner, createHook } = this.props;
+    const repo = {
+      name,
+      owner,
+      full_name
+    };
+    const createHookWithRepo = createHook.bind(this, repo);
+
     return (
       <li className={`hook-container${this.state.isActive ? ' selected' : ''}`}>
-          <CreateHookButton isActive={this.state.isActive}/>
+          <CreateHookButton createHook={createHookWithRepo} isActive={this.state.isActive}/>
           <a className="repo name" onClick={this.toggleEvents}>{ full_name }</a>
           { this.state.isActive && <HookEvents/> }
       </li>
@@ -33,6 +40,7 @@ class Hook extends React.Component {
 
 Hook.propTypes = {
   full_name: PropTypes.string.isRequired,
+  createHook: PropTypes.func.isRequired,
 };
 
 export default Hook;

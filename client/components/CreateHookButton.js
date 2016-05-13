@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CreateHookButton = ({ isActive }) => (
+const CreateHookButton = ({ isActive, createHook }) => (
   <div className={`create-hook${isActive ? ' collapse' : ''}`}>
-    <a>+</a>
+    <a onClick={isActive ? () => {} : createHook }>+</a>
   </div>
 );
 

@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
   refresh_token: String,
   githubID: Number,
   username: String,
-  hooks: [{ repo: String, scopes: [String], callback_url: String }]
+  hooks: [{ repo: String, hook_id: Number, scopes: [String], callback_url: String }]
 });
 
 var User = mongoose.model('User', userSchema);
