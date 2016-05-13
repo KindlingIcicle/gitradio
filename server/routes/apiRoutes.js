@@ -1,4 +1,6 @@
 var request = require('request');
+var parseLinkHeader = require('parse-link-header');
+
 var GITHUB_API = process.env.GITHUB_API;
 
 // TODO: refactor middleware into middleware folder
@@ -16,12 +18,12 @@ var getRequestOpts = function(req, res, next) {
 };
 
 // middleware that makes GET request to Github. Before this middleware, req.opts.url should be set
-// TODO: auto-paginate
 var makeGithubGetRequest = function(req, res, next) {
   request(req.opts, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       // append to req and pass to middleware
       req.body = body;
+      req.pagination = parseLinkHeader(response.headers.link);
       next(req, res);
     } else {
       console.log('error:',error, response.statusCode);
@@ -56,9 +58,25 @@ module.exports = function(router) {
       type: 'all',
     };
 
-    makeGithubGetRequest(req, res, function(req, res, next) {
-      res.send(req.body);
-    });
+    var results = [];
+
+    // autopagination
+    var autoPaginate = function(req, res, next) {
+      results.push(req.body);
+      if (req.pagination.next) {
+        req.opts.url = req.pagination.next.url;
+        makeGithubGetRequest(req, res, autoPaginate);
+      } else {
+        results = results.reduce(function(memo, body) {
+            body = JSON.parse(body);
+            memo = memo.concat(body);
+            return memo;
+        }, []);
+        res.send(results);
+      }
+    };
+
+    makeGithubGetRequest(req, res, autoPaginate);
   });
 
   // Gets profile of logged-in user if authenticated.
