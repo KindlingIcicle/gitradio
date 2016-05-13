@@ -20,7 +20,7 @@ export const currentUser = (state = {
         username: action.data.username,
         name: action.data.name,
         firstName: action.data.name.split(' ')[0],
-        hooks: [...action.data.hooks],
+        hooks: [...state.hooks, ...action.data.hooks],
         //        profileUrl: action.data.html_url,
       });
     case REQUEST_USER:
@@ -38,7 +38,7 @@ export const currentUser = (state = {
       });
     case RECEIVE_HOOK_CREATION_SUCCESS:
       return Object.assign({}, state, {
-        hooks: [{
+        hooks: [...state.hooks, {
           hook_id: action.data.hook_id,
           repo: action.data.repo,
           events: action.data.scopes,
