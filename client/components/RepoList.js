@@ -5,7 +5,7 @@ const RepoList = ({ repos, onRepoClick }) => (
   <div className="repo-container">
     <ul>
      {repos.map(repo =>
-                <Repo key={repo.id}
+                <Repo key={repo._id}
                   {...repo}
                   onRepoClick={onRepoClick}
                 />
@@ -16,9 +16,8 @@ const RepoList = ({ repos, onRepoClick }) => (
 
 RepoList.propTypes = {
   repos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    owner: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    hook_id: PropTypes.number.isRequired,
+    repo: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   onRepoClick: PropTypes.func.isRequired,
 };
